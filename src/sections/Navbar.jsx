@@ -26,7 +26,7 @@ const Navbar = () => {
             href="/"
             className="font-bold text-xl hover:text-teal-700 transition-colors"
           >
-            Anastasiia
+            Anastasia
           </a>
 
           <button
