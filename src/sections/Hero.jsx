@@ -20,7 +20,7 @@ const Hero = () => {
   return (
     <section className="min-h-screen w-full flex flex-col relative" id="home">
       <div className="w-full mx-auto flex flex-col sm:mt-28 mt-24 c-space gap-2">
-        <h1 className="sm:text-3xl max-sm:mt-10 text-xl font-medium text-black text-center font-generalsans">
+        <h1 className="sm:text-3xl max-sm:mt-4 text-xl font-medium text-black text-center font-generalsans">
           Hi there, welcome to my portfolio!
         </h1>
         <h2 className="hero_tag text-transparent bg-clip-text bg-gradient-to-b from-black via-gray-800 to-teal-700">
@@ -66,7 +66,7 @@ const Hero = () => {
         </div>
 
         {/* Центр: 3D-сцена */}
-        <div className="relative -top-6 md:w-[40%] 2xl:w-full h-[60vh] max-lg:h-[55vh] max-md:h-[30vh]">
+        <div className="relative -top-6 2xl:w-full h-[60vh] max-2xl:w-[500px] max-[860px]:w-[56%] max-lg:h-[55vh] max-md:h-[30vh]">
           <Canvas className="w-full h-full">
             <Suspense fallback={<CanvasLoader />}>
               <PerspectiveCamera makeDefault position={[0, 0, 5]} />
