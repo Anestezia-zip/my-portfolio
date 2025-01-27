@@ -49,7 +49,7 @@ body {
 
   /* button component */
   .btn {
-    @apply flex gap-4 items-center justify-center cursor-pointer p-3 rounded-md bg-black-300  transition-all active:scale-95 text-white mx-auto;
+    @apply flex gap-4 items-center justify-center cursor-pointer p-3 rounded-md transition-all active:scale-95 text-white mx-auto;
   }
 
   .btn-ping {
@@ -57,7 +57,7 @@ body {
   }
 
   .btn-ping_dot {
-    @apply relative inline-flex rounded-full h-3 w-3 bg-green-500;
+    @apply relative inline-flex rounded-full h-3 w-3 bg-green-300;
   }
 
   /* hero section */
@@ -199,4 +199,32 @@ body {
   100% {
     transform: rotate(0deg);
   }
+}
+
+/* Анимация 1: Плавание вниз-вправо */
+@keyframes float-down-right {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(2px, 2px);
+  }
+}
+
+/* Анимация 2: Плавание вверх-влево */
+@keyframes float-down-left {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-2px, 2px);
+  }
+}
+
+.animate-float-down-right {
+  animation: float-down-right 4s ease-in-out infinite;
+}
+
+.animate-float-down-left {
+  animation: float-down-left 4s ease-in-out infinite;
 }

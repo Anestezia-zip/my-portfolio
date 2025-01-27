@@ -6,6 +6,9 @@ export default {
       fontFamily: {
         generalsans: ['General Sans', 'sans-serif'],
       },
+      boxShadow: {
+        'inner-header': 'inset 0 -2px 4px rgba(0, 0, 0, 0.1)',
+      },
       colors: {
         primary: 'var(--primary-color)',
         secondary: 'var(--secondary-color)',

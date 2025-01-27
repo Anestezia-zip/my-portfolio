@@ -1,27 +1,25 @@
-import { PerspectiveCamera, OrbitControls } from '@react-three/drei'
-import { Canvas } from '@react-three/fiber'
-import React, { Suspense } from 'react'
-import CanvasLoader from '../components/Loading'
-import ModernGadgets from '../components/ModernGadgets'
-import { Leva, useControls } from 'leva'
-import { useMediaQuery } from 'react-responsive'
-import { calculateSizes } from '../constatns'
-import Target from '../components/Target'
-import IconButton from '../components/IconButton'
-
+import { PerspectiveCamera } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import React, { Suspense, useState } from "react";
+import CanvasLoader from "../components/Loading";
+import ModernGadgets from "../components/ModernGadgets";
+import { useMediaQuery } from "react-responsive";
+import { calculateSizes } from "../constatns";
+import IconButton, { items } from "../components/IconButton";
+import HeroCamera from "../components/HeroCamera";
+import Button from "../components/Button";
 
 const Hero = () => {
   // Use media queries to determine screen size
-  const isSmall = useMediaQuery({ maxWidth: 640 });
-  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isSmall = useMediaQuery({ maxWidth: 639.5 });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
 
   const sizes = calculateSizes(isSmall, isMobile, isTablet);
 
-
   return (
     <section className="min-h-screen w-full flex flex-col relative" id="home">
-      <div className="w-full mx-auto flex flex-col sm:mt-32 mt-24 c-space gap-3">
+      <div className="w-full mx-auto flex flex-col sm:mt-28 mt-24 c-space gap-2">
         <h1 className="sm:text-3xl max-sm:mt-10 text-xl font-medium text-black text-center font-generalsans">
           Hi there, welcome to my portfolio!
         </h1>
@@ -30,74 +28,126 @@ const Hero = () => {
         </h2>
       </div>
 
-      <div className='flex max-lg:flex-col-reverse max-lg:items-center'>
-        <div className=' z-10 w-[60%] max-lg:w-[80%] max-lg:justify-center relative top-12 max-xl:top-12 flex gap-6 left-20 max-lg:-left-12'>
-          <div className='uppercase text-xl relative translate-y-20 font-medium font-generalsans'>
-            <h3>My</h3>
-            <h3>tech</h3>
-            <h3>skills</h3>
+      <div className="flex max-md:flex-col items-center justify-center max-lg:gap-8 gap-16 px-4">
+        {/* Left item list */}
+        <div className="hidden md:flex justify-center gap-6 items-end w-fit mt-8">
+          <div className="relative -top-10 flex flex-col gap-6">
+            {items.slice(0, 5).map((item, i) => (
+              <div
+                key={i}
+                className={
+                  i % 2 === 0 ? "animate-float-down-right" : "animate-float-down-left"
+                }
+              >
+                <IconButton
+                  text={item.text}
+                  src={item.src}
+                  direction="left"
+                />
+              </div>
+            ))}
           </div>
-          <ul>
-            <li className='flex gap-12 max-xl:gap-8 mb-4'>
-              <IconButton text='HTML5 & CSS3' src="/assets/coding.png" />
-              <IconButton text='SCSS' src="/assets/format.png" />
-              <IconButton text='JavaScript' src="/assets/js.png" />
-              <IconButton text='TypeScript' src="/assets/ts.png" />
-              <IconButton text='GIT' src="/assets/git.png" />
-            </li>
-            <li className='flex gap-12 max-xl:gap-8 mb-4'>
-              <IconButton text='React' src="/assets/react.png" />
-              <IconButton text='TailwindCSS' src="/assets/tailwind.png" />
-              <IconButton text='Angular' src="/assets/angular.png" />
-              <IconButton text='Responsive design' src="/assets/responsive.png" />
-              <IconButton text='Three' src="/assets/three.png" />
-            </li>
-            <li className='flex gap-12 max-xl:gap-8 mb-4'>
-              <IconButton text='Web accessibility' src="/assets/mobile.png" />
-              <IconButton text='AWS' src="/assets/aws.png" />
-              <IconButton text='Web marketing' src="/assets/marketing.png" />
-              <IconButton text='SEO' src="/assets/seo.png" />
-              <IconButton text='Software testing' src="/assets/software-testing.png" />
-            </li>
-            <li className="flex gap-12 max-xl:gap-8 mb-4">
-              <IconButton text='E-commerce' src="/assets/shopping.png" />
-              <IconButton text='Python' src="/assets/python.png" />
-              <IconButton text='Django' src="/assets/django.png" />
-              <IconButton text='MySQL' src="/assets/mysql.png" />
-              <IconButton text='PostgreSQL' src="/assets/postgresql.png" />
-            </li>
-          </ul>
+          <div className="flex flex-col gap-6">
+            {items.slice(5, 10).map((item, i) => (
+              <div
+                key={i}
+                className={
+                  i % 2 === 0 ? "animate-float-down-left" : "animate-float-down-right"
+                }
+              >
+                <IconButton
+                  text={item.text}
+                  src={item.src}
+                  direction="left"
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="w-[35%] max-xl:w-[40%] max-lg:w-[60%] h-[400px] relative top-2 right-10 max-[1140px]:right-10">
-          <Canvas className='w-full h-full'>
-            {/* <Leva /> */}
+        {/* Центр: 3D-сцена */}
+        <div className="relative -top-6 md:w-[40%] 2xl:w-full h-[60vh] max-lg:h-[55vh] max-md:h-[30vh]">
+          <Canvas className="w-full h-full">
             <Suspense fallback={<CanvasLoader />}>
-              <PerspectiveCamera makeDefault position={[0,0,5]}/>
-              <OrbitControls enableZoom={false} />
-
-              <group position={sizes.deskPosition} className="model-container">
-                <ModernGadgets 
-                  position={[0,0,0]}
+              <PerspectiveCamera makeDefault position={[0, 0, 5]} />
+              <HeroCamera isMobile={isMobile}>
+                <ModernGadgets
+                  position={sizes.deskPosition}
                   rotation={[0.4, -0.8, 0]}
-                  scale={sizes.deskScale} 
+                  scale={sizes.deskScale}
                 />
-
-              </group>
-
-              <group>
-                {/* <Target /> */}
-              </group>
-              <ambientLight intensity={1}/>
-              <directionalLight position={[10,10,10]} intensity={0.5}/>
-              
+              </HeroCamera>
+              <ambientLight intensity={1} />
+              <directionalLight position={[10, 10, 10]} intensity={0.5} />
             </Suspense>
           </Canvas>
         </div>
+
+        {/* Right item list */}
+        <div className="hidden md:flex justify-center gap-6 items-end w-fit mt-8">
+          <div className="flex flex-col z-10 gap-6">
+            {items.slice(10, 15).map((item, i) => (
+              <div
+                key={i}
+                className={
+                  i % 2 === 0 ? "animate-float-down-right" : "animate-float-down-left"
+                }
+              >
+                <IconButton
+                  text={item.text}
+                  src={item.src}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="relative -top-10 z-0 flex flex-col gap-6">
+            {items.slice(15, 20).map((item, i) => (
+              <div
+                key={i}
+                className={
+                  i % 2 === 0 ? "animate-float-down-left" : "animate-float-down-right"
+                }
+              >
+                <IconButton
+                  text={item.text}
+                  src={item.src}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile tech item list */}
+        <div className="relative -top-24 md:hidden flex items-center justify-center w-fit">
+          <div className="grid grid-cols-5 gap-6 p-4">
+            {items.slice(0, 20).map((item, i) => (
+              <div
+                key={i}
+                className={
+                  i % 2 === 0 ? "animate-float-down-left" : "animate-float-down-right"
+                }
+              >
+                <IconButton
+                  text={item.text}
+                  src={item.src}               
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
 
+      <div className="absolute xl:bottom-8 2xl:bottom-20 max-xl:bottom-6 left-0 right-0 w-fit mx-auto z-10 c-space">
+        <a href="#about" className="w-fit">
+          <Button
+            name="Let's work together"
+            isBeam
+            containerClass="sm:w-fit w-full sm:min-w-96 bg-gradient-to-b from-teal-900 via-gray-800 to-black "
+          />
+        </a>
+      </div>
     </section>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

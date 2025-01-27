@@ -1,25 +1,60 @@
 import React, { useRef, useState } from "react";
 
-const IconButton = ({ width, src, text, color, ...props }) => {
+export const items = [
+  { text: "HTML5 & CSS3", src: "/assets/coding.png" },
+  { text: "SCSS", src: "/assets/format.png" },
+  { text: "JavaScript", src: "/assets/js.png" },
+  { text: "TypeScript", src: "/assets/ts.png" },
+  { text: "GIT", src: "/assets/git.png" },
+  { text: "React", src: "/assets/react.png" },
+  { text: "TailwindCSS", src: "/assets/tailwind.png" },
+  { text: "Angular", src: "/assets/angular.png" },
+  { text: "Responsive Design", src: "/assets/responsive.png" },
+  { text: "Three.js", src: "/assets/three.png" },
+  { text: "Web Accessibility", src: "/assets/mobile.png" },
+  { text: "AWS", src: "/assets/aws.png" },
+  { text: "Web Marketing", src: "/assets/marketing.png" },
+  { text: "SEO", src: "/assets/seo.png" },
+  { text: "Software Testing", src: "/assets/software-testing.png" },
+  { text: "E-Commerce", src: "/assets/shopping.png" },
+  { text: "Python", src: "/assets/python.png" },
+  { text: "Django", src: "/assets/django.png" },
+  { text: "MySQL", src: "/assets/mysql.png" },
+  { text: "PostgreSQL", src: "/assets/postgresql.png" },
+];
+
+const IconButton = ({ src, text, color, direction = "right", ...props }) => {
   const [hovered, setHovered] = useState(false);
   const textRef = useRef(null);
 
+  
   return (
-    <button
-      className={`flex flex-nowrap p-1 items-center rounded-lg text-black ${color || ""}`}
+    <div 
+      className={`relative flex items-center gap-2 ${color || ""}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
-      <img className="w-[50px] max-md:w-[30px]" src={src} alt="Tech icon"/>
-      <div 
-        className="overflow-x-hidden transition-all duration-300 ease-out"
-        style={{ width: hovered ? `calc(${textRef.current?.offsetWidth || 0}px + 6px)` || 0 : 0 }}
+      {/* Icon */}
+      <img className="w-[45px] max-sm:w-[30px] max-md:w-[40px] 2xl:w-[100px]" src={src} alt="Tech icon" />
+
+      {/* Text */}
+      <div
+        className={`absolute transition-all duration-300 ease-out ${
+          direction === "left" ? "right-full mr-2" : "left-full ml-2"
+        }`}
+        style={{
+          width: hovered ? `calc(${textRef.current?.offsetWidth || 0}px + 4px)` : 0,
+          overflow: "hidden",
+        }}
       >
-        <span ref={textRef} className="p-1 m-1 rounded-lg bg-white inline-block whitespace-nowrap">
+        <span
+          ref={textRef}
+          className="2xl:text-2xl max-lg:text-base p-1 rounded-lg bg-white whitespace-nowrap shadow-lg"
+        >
           {text}
         </span>
       </div>
-    </button>
+    </div>
   );
 };
 
