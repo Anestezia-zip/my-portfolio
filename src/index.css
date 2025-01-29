@@ -43,10 +43,6 @@ body {
     @apply absolute left-0 right-0 bg-white backdrop-blur-sm transition-all duration-500 ease-in-out overflow-hidden z-20 mx-auto sm:hidden block;
   }
 
-  .text-gray_gradient {
-    @apply bg-gradient-to-r from-[#BEC1CF] from-60% via-[#D5D8EA] via-60% to-[#D5D8EA] to-100% bg-clip-text text-transparent;
-  }
-
   /* button component */
   .btn {
     @apply flex gap-4 items-center justify-center cursor-pointer p-3 rounded-md transition-all active:scale-95 text-white mx-auto;
@@ -67,15 +63,15 @@ body {
 
   /* about section */
   .grid-container {
-    @apply w-full h-full border border-black-300 bg-black-200 rounded-lg sm:p-7 p-4 flex flex-col gap-5;
+    @apply w-full h-full border border-gray-300 bg-gradient-to-b from-[#6a9fb5] via-[#4a7287] to-[#232c3c] rounded-lg sm:p-7 p-4 flex flex-col justify-between gap-5;
   }
-
+  
   .grid-headtext {
     @apply text-xl font-semibold mb-2 text-white font-generalsans;
   }
 
   .grid-subtext {
-    @apply text-[#afb0b6] text-base font-generalsans;
+    @apply text-white text-base font-generalsans;
   }
 
   .copy-container {

@@ -36,14 +36,12 @@ const Hero = () => {
               <div
                 key={i}
                 className={
-                  i % 2 === 0 ? "animate-float-down-right" : "animate-float-down-left"
+                  i % 2 === 0
+                    ? "animate-float-down-right"
+                    : "animate-float-down-left"
                 }
               >
-                <IconButton
-                  text={item.text}
-                  src={item.src}
-                  direction="left"
-                />
+                <IconButton text={item.text} src={item.src} direction="left" />
               </div>
             ))}
           </div>
@@ -52,14 +50,12 @@ const Hero = () => {
               <div
                 key={i}
                 className={
-                  i % 2 === 0 ? "animate-float-down-left" : "animate-float-down-right"
+                  i % 2 === 0
+                    ? "animate-float-down-left"
+                    : "animate-float-down-right"
                 }
               >
-                <IconButton
-                  text={item.text}
-                  src={item.src}
-                  direction="left"
-                />
+                <IconButton text={item.text} src={item.src} direction="left" />
               </div>
             ))}
           </div>
@@ -90,13 +86,12 @@ const Hero = () => {
               <div
                 key={i}
                 className={
-                  i % 2 === 0 ? "animate-float-down-right" : "animate-float-down-left"
+                  i % 2 === 0
+                    ? "animate-float-down-right"
+                    : "animate-float-down-left"
                 }
               >
-                <IconButton
-                  text={item.text}
-                  src={item.src}
-                />
+                <IconButton text={item.text} src={item.src} />
               </div>
             ))}
           </div>
@@ -105,13 +100,12 @@ const Hero = () => {
               <div
                 key={i}
                 className={
-                  i % 2 === 0 ? "animate-float-down-left" : "animate-float-down-right"
+                  i % 2 === 0
+                    ? "animate-float-down-left"
+                    : "animate-float-down-right"
                 }
               >
-                <IconButton
-                  text={item.text}
-                  src={item.src}
-                />
+                <IconButton text={item.text} src={item.src} />
               </div>
             ))}
           </div>
@@ -124,13 +118,12 @@ const Hero = () => {
               <div
                 key={i}
                 className={
-                  i % 2 === 0 ? "animate-float-down-left" : "animate-float-down-right"
+                  i % 2 === 0
+                    ? "animate-float-down-left"
+                    : "animate-float-down-right"
                 }
               >
-                <IconButton
-                  text={item.text}
-                  src={item.src}               
-                />
+                <IconButton text={item.text} src={item.src} />
               </div>
             ))}
           </div>
@@ -142,7 +135,7 @@ const Hero = () => {
           <Button
             name="Let's work together"
             isBeam
-            containerClass="sm:w-fit w-full sm:min-w-96 bg-gradient-to-b from-teal-900 via-gray-800 to-black "
+            containerClass="sm:w-fit w-full sm:min-w-96 bg-gradient-to-b from-teal-900 via-gray-800 to-black"
           />
         </a>
       </div>
