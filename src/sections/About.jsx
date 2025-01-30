@@ -17,12 +17,13 @@ const About = () => {
   return (
     <section className="c-space my-20" id="about">
       <div className="grid xl:grid-cols-3 xl:grid-rows-6 md:grid-cols-2 grid-cols-1 gap-5 h-full">
+
         <div className="col-span-1 xl:row-span-3">
           <div className="grid-container">
             <div className="h-full flex items-center justify-center">
               <img
                 src="assets/grid-1.png"
-                alt="grid-1"
+                alt="Girl developer icon"
                 className="w-full sm:h-[160px] h-[70%] object-contain"
               />
             </div>
@@ -128,6 +129,7 @@ const About = () => {
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

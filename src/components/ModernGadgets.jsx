@@ -10,7 +10,8 @@ import React from 'react'
 import { useGLTF } from '@react-three/drei'
 
 const ModernGadgets = (props) => {
-  const { nodes, materials } = useGLTF('/models/scene.gltf')
+  const { nodes, materials } = useGLTF('/models/modern-gadgets/scene.gltf')
+  
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>

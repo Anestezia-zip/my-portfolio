@@ -12,7 +12,7 @@ export const items = [
   { text: "Responsive Design", src: "/assets/responsive.png" },
   { text: "Three.js", src: "/assets/three.png" },
   { text: "Web Accessibility", src: "/assets/mobile.png" },
-  { text: "AWS", src: "/assets/aws.png" },
+  { text: "AWS S3", src: "/assets/aws.png" },
   { text: "Web Marketing", src: "/assets/marketing.png" },
   { text: "SEO", src: "/assets/seo.png" },
   { text: "Software Testing", src: "/assets/software-testing.png" },

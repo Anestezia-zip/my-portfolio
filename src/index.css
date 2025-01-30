@@ -14,7 +14,7 @@
 }
 
 body {
-  background: linear-gradient(135deg, rgb(168, 222, 206) 0%, rgb(158, 200, 220) 100%);
+  background: linear-gradient(90deg, rgb(168, 222, 206) 40%, rgb(158, 200, 220) 100%);
   font-family: 'General Sans', sans-serif;
 }
 
@@ -24,7 +24,7 @@ body {
   }
 
   .head-text {
-    @apply sm:text-4xl text-3xl font-semibold text-gray_gradient;
+    @apply sm:text-4xl text-3xl font-semibold;
   }
 
   .nav-ul {
@@ -63,7 +63,7 @@ body {
 
   /* about section */
   .grid-container {
-    @apply w-full h-full border border-gray-300 bg-gradient-to-b from-[#6a9fb5] via-[#4a7287] to-[#232c3c] rounded-lg sm:p-7 p-4 flex flex-col justify-between gap-5;
+    @apply w-full h-full bg-gradient-to-b from-[#e1e4c4] via-[#4a7287] to-[#093337] rounded-lg sm:p-7 p-4 flex flex-col justify-between gap-5;
   }
   
   .grid-headtext {
@@ -80,7 +80,7 @@ body {
 
   /* projects section  */
   .arrow-btn {
-    @apply w-10 h-10 p-3 cursor-pointer active:scale-95 transition-all rounded-full arrow-gradient;
+    @apply w-9 h-9 p-2 cursor-pointer active:scale-75 transition-all rounded-full arrow-gradient;
   }
 
   .tech-logo {
@@ -161,13 +161,14 @@ body {
 }
 
 .arrow-gradient {
-  background-image: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.1) 10%,
-    rgba(255, 255, 255, 0.000025) 50%,
-    rgba(255, 255, 255, 0.000025) 50%,
-    rgba(255, 255, 255, 0.025) 100%
+  background-image: radial-gradient(
+    circle closest-side,
+    rgba(30, 58, 138, 0.8) 0%,    /* Глубокий синий в центре */
+    rgba(17, 42, 104, 0.7) 40%,   /* Чуть темнее и менее насыщенный */
+    rgba(10, 25, 75, 0.6) 70%,    /* Темно-синий с большей прозрачностью */
+    rgba(5, 15, 50, 0.4) 100%     /* Почти чёрный к краям */
   );
+  
 }
 
 @keyframes wave-animation {
