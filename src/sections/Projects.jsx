@@ -3,10 +3,9 @@ import { projectsByTech } from "../constatns";
 import { Canvas } from "@react-three/fiber";
 import CanvasLoader from "../components/Loading";
 import { Center, OrbitControls } from "@react-three/drei";
-import { useControls } from "leva";
 import { calculateSizes } from "../constatns";
 import { useMediaQuery } from "react-responsive";
-import TvMonitor from "../components/tvMonitor";
+import TvMonitor from "../components/TvMonitor";
 
 const projectCount = projectsByTech.find(
   (category) => category.tech === "React + TailwindCSS"
