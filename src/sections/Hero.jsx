@@ -131,8 +131,8 @@ const Hero = () => {
                   index={i}
                   activeIndex={activeIndex}
                   setActiveIndex={setActiveIndex}
-                  positionClass='-top-6 -left-2'
-                />
+                  positionClass="-top-7 left-1/2 transform -translate-x-1/2"
+                  />
               </div>
             ))}
           </div>

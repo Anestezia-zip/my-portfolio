@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 
-const TechButton = ({ src, text, color, index, activeIndex, setActiveIndex, ...props }) => {
+const TechButton = ({ src, text, color = '', index, activeIndex, setActiveIndex, ...props }) => {
     const buttonRef = useRef(null); // Ссылка на саму кнопку
 
   const handleClick = (event) => {
@@ -32,11 +32,11 @@ const TechButton = ({ src, text, color, index, activeIndex, setActiveIndex, ...p
   return (
     <div 
       ref={buttonRef} // Привязываем ссылку к элементу
-      className={`tech-logo flex items-center gap-2 ${color || ""} ${activeIndex === index ? "z-20" : "z-0"}`} // Добавляем z-20 для активного элемента
+      className={`tech-logo flex items-center gap-2 ${color} ${activeIndex === index ? "border active:scale-105" : "z-0"}`} // Добавляем z-20 для активного элемента
       onClick={handleClick} // Обработчик клика по кнопке
     >
       {/* Icon */}
-      <img className="w-[45px] max-sm:w-[30px] max-md:w-[40px] 2xl:w-[100px]" src={src} alt="Tech icon" />
+      <img className={`w-[45px] max-sm:w-[30px] max-md:w-[40px] 2xl:w-[100px] ${activeIndex === index && "scale-150"}`} src={src} alt="Tech icon" />
 
       {/* Text */}
       {activeIndex === index && (
@@ -44,7 +44,7 @@ const TechButton = ({ src, text, color, index, activeIndex, setActiveIndex, ...p
             className={`absolute z-30 ${props.positionClass} transition-all duration-300 ease-out`}
         >
             <span
-              className="2xl:text-2xl text-base p-1 rounded-lg bg-white whitespace-nowrap shadow-lg"
+              className={`2xl:text-2xl text-base p-1 rounded-lg bg-white whitespace-nowrap shadow-lg ${activeIndex === index && 'relative z-20'}"`}
             >
               {text}
             </span>

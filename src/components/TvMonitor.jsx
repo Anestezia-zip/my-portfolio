@@ -18,7 +18,13 @@ const TvMonitor = (props) => {
     "/models/tv/tv__glass_table_sketchfab.glb"
   );
 
-  const txt = useVideoTexture(props.texture ? props.texture : '/assets/videos/project1.mp4')
+  const txt = useVideoTexture(props.texture, {
+    muted: true, // Отключаем звук
+    loop: true,  // Зацикливаем
+    autoPlay: true, // Включаем автозапуск
+    playsInline: true, // Для iPhone
+    crossOrigin: "anonymous", // Исправляет проблемы с кэшированием
+  });    
 
   useGSAP(() => {
     gsap.from(group.current.rotation, {
