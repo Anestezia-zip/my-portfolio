@@ -22,12 +22,12 @@ export const navLinks = [
   ];
 
 
-  export const calculateSizes = (isSmall, isMobile, isTablet) => {
+  export const calculateSizes = (isSmall, isMobile, isTablet, isLaptop) => {
     return {
       deskScale: isSmall ? 4.5 : isMobile ? 6 : isTablet ? 4.5 : 6,
       deskPosition: isSmall ? [-0.2, 0, 0] : isMobile ? [-0.2, -0.5, 0] : [-0.3, -0.7, 0],
-      tvScale: isSmall ? 1 : isMobile ? 1 : isTablet ? 1 : 2.8,
-      tvPosition: isSmall ? [0.9, 0.1, 2.5] : isMobile ? [0.9, 0.1, 2.5] : [-0.5, 0, 0],
+      tvScale: isSmall ? 3.6 : isTablet ? 2.3 : isLaptop ? 2.8 : 3,
+      tvPosition: isSmall ? [-1.1, -0.3, 0] : isTablet ? [-0.7, -0.3, 0] : [-0.8, 0, 0],
     };
   };
 
@@ -37,8 +37,8 @@ export const navLinks = [
       projects: [
         {
           title: "Edge Author's tours",
-          desc: 'A stunning React-based website with unique animations and interactive features. It includes a full-screen expanding form on scroll, mouse-responsive cards, playful buttons with jumping text, animated headings, and decorative symbols.',
-          subdesc: 'An animated audio player adds to the immersive experience. Fully responsive, it looks exceptional on both desktop and mobile, with perfect iOS compatibility and cross-browser support. Built with reusable components, the site is validated for proper markup and enhanced with accessibility, blending beauty, functionality, and inclusivity seamlessly.',
+          desc: 'A stunning website includes a full-screen expanding form on scroll, mouse-responsive cards, animated headings, buttons and audio player.',
+          subdesc: 'Fully responsive with perfect iOS compatibility and cross-browser support. Built with reusable components, validated for proper markup and enhanced with accessibility, blending beauty, functionality, and inclusivity seamlessly.',
           href: 'https://edge-author-tours.vercel.app/',
           githubHref: 'https://github.com/Anestezia-zip/Edge-Author-Tours',
           texture: '/assets/videos/project1.mp4',
@@ -68,7 +68,7 @@ export const navLinks = [
         },
         {
           title: 'Stunning Yoga Studio',
-          desc: 'A visually stunning landing page built with animations are applied to almost every element, including buttons, the appearance of sections, plan switching, and sliding questions in the FAQ section.',
+          desc: 'Beautiful landing page with animations which are applied to almost every element, including buttons, sections, plan switching, and sliding questions in the FAQ section.',
           subdesc: 'Built with React, Framer Motion, and Tailwind CSS, utilizing libraries like clsx, react-countup, react-icons, react-router-dom, react-scroll, and react-slidedown for enhanced interactivity and smooth animations.',
           href: 'https://stunning-yoga-studio-2024.vercel.app/',
           githubHref: 'https://github.com/Anestezia-zip/CodeCraft-landing-page',
@@ -89,13 +89,18 @@ export const navLinks = [
               id: 3,
               name: 'Framer Motion',
               path: '/assets/framer.png',
+            },
+            {
+              id: 4,
+              name: 'GSAP',
+              path: '/assets/gsap.jpg',
             }
           ],
         },
         {
           title: 'CodeCraft',
-          desc: 'Landing page with all necessary information, smooth navigation to each section, and animated section appearances.',
-          subdesc: 'Built with React, Tailwind, and Framer Motion',
+          desc: 'Landing page with all necessary information, smooth navigation to each section, engaging visuals, and animated section appearances for a seamless user experience.',
+          subdesc: 'Built with React, Tailwind, and Framer Motion for a modern, responsive, and dynamic UI.',          
           href: 'https://code-craft-landing-page.vercel.app/',
           githubHref: 'https://github.com/Anestezia-zip/CodeCraft-landing-page',
           texture: '/assets/videos/project3.mp4',
@@ -121,8 +126,8 @@ export const navLinks = [
         },
         {
           title: 'Restaura',
-          desc: 'Landing page with all necessary information, smooth navigation to each section, and animated section appearances.',
-          subdesc: 'Built with React, Tailwind, and Framer Motion',
+          desc: 'Landing page with all necessary information, smooth navigation to each section, engaging visuals, and animated section appearances for a seamless user experience.',
+          subdesc: 'Built with React, Tailwind, and Framer Motion for a modern, responsive, and dynamic UI.',         
           href: 'https://restaura-landing-page.vercel.app/',
           githubHref: 'https://github.com/Anestezia-zip/restaura-landing-page',
           texture: '/assets/videos/project4.mp4',
@@ -156,7 +161,7 @@ export const navLinks = [
           subdesc: 'Registered users can create accounts, rate paintings, track order history, manage wishlists, and update their profile or submitted queries. Site owners have full control over paintings, ratings, and user management, ensuring smooth operation and content moderation.',
           href: 'https://artful-urbex-3e13a9b6e83c.herokuapp.com/',
           githubHref: 'https://github.com/Anestezia-zip/django-art-store',
-          texture: '/projects/main/art-res.png',
+          texture: '/assets/videos/project5.mp4',
           logo: '/projects/logo/art-logo.png',
           tags: [
             {
@@ -188,17 +193,17 @@ export const navLinks = [
         },
         {
           title: 'Volunteer Force',
-          desc: 'A platform dedicated to connecting volunteers and organizations.',
-          subdesc: 'Includes authentication, admin-panel, pagination and interactive map with gallery.',
+          desc: 'A dedicated platform designed to seamlessly connect volunteers with organizations.',
+          subdesc: 'It features secure authentication, a user-friendly admin panel, efficient pagination for managing content, and an interactive map with a visually engaging gallery.',
           href: 'https://volunteer-force-2bed457ddbdb.herokuapp.com',
           githubHref: 'https://github.com/Anestezia-zip/django-volunteer-force',
-          texture: '/projects/main/volunteer-res.jpg',
+          texture: '/assets/videos/project6.mp4',
           logo: '/projects/logo/volunteer-logo.png',
           tags: [
             {
               id: 1,
               name: 'Django',
-              path: '/assets/angular.png',
+              path: '/assets/django.png',
             },
             {
               id: 2,
@@ -223,14 +228,19 @@ export const navLinks = [
           subdesc: 'Users can select between monthly, weekly, or daily calculations and access a variety of specific sales and performance metrics, seamlessly integrated with Google Drive and Google Sheets APIs.',
           href: 'https://apple-sales-report-6a3868d388e4.herokuapp.com/',
           githubHref: 'https://github.com/Anestezia-zip/Apple-sales',
-          texture: '/projects/main/apple-res.jpg',
+          texture: '/assets/videos/project7.mp4',
           logo: '/projects/logo/apple-logo.png',
           tags: [
             {
               id: 1,
               name: 'Python',
               path: '/assets/python.png',
-            }
+            },
+            {
+              id: 2,
+              name: 'Heroku',
+              path: '/assets/heroku.png',
+            },
           ],
         },
       ],
@@ -244,7 +254,7 @@ export const navLinks = [
           subdesc: 'The store is fully responsive, optimized for both mobile and tablet devices.',
           href: 'https://monosushi-project.vercel.app/',
           githubHref: 'https://github.com/Anestezia-zip/monosushi-project',
-          texture: '/projects/main/monosushi-res.jpg',
+          texture: '/assets/videos/project8.mp4',
           logo: '/projects/logo/monosushi-logo.png',
           tags: [
             {
@@ -270,7 +280,7 @@ export const navLinks = [
           subdesc: 'Fully responsive, incorporating touchstart and touchmove events for an intuitive and smooth touch experience on mobile devices.',
           href: 'https://anestezia-zip.github.io/Puzzle-game/',
           githubHref: 'https://github.com/Anestezia-zip/Puzzle-game',
-          texture: '/projects/main/puzzle-res/png',
+          texture: '/assets/videos/project9.mp4',
           logo: '/projects/logo/puzzle-logo.png',
           tags: [
             {
@@ -291,7 +301,7 @@ export const navLinks = [
           subdesc: 'Fully responsive, uses smooth transitions, engaging animations, and well-organized sections to guide users through key content.',
           href: 'https://anestezia-zip.github.io/Suffix/',
           githubHref: 'https://github.com/Anestezia-zip/Suffix',
-          texture: '/projects/main/suffix-res.jpg',
+          texture: '/assets/videos/project10.mp4',
           logo: '/projects/logo/suffix-logo.png',
           tags: [
             {

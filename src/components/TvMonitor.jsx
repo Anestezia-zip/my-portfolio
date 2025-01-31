@@ -8,14 +8,25 @@ Title: Game Ready UHD Curved TV
 
 import React, { useRef } from "react";
 import { useGLTF, useVideoTexture } from "@react-three/drei";
+import { useGSAP } from "@gsap/react";
+import gsap from 'gsap';
+
 
 const TvMonitor = (props) => {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF(
+  const { nodes, materials } = useGLTF(
     "/models/tv/tv__glass_table_sketchfab.glb"
   );
 
   const txt = useVideoTexture(props.texture ? props.texture : '/assets/videos/project1.mp4')
+
+  useGSAP(() => {
+    gsap.from(group.current.rotation, {
+      y: -Math.PI / 4,
+      duration: 1,
+      ease: 'power3.out'
+    })
+  }, [txt])
 
 
   return (

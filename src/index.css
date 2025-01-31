@@ -63,7 +63,7 @@ body {
 
   /* about section */
   .grid-container {
-    @apply w-full h-full bg-gradient-to-b from-[#e1e4c4] via-[#4a7287] to-[#093337] rounded-lg sm:p-7 p-4 flex flex-col justify-between gap-5;
+    @apply w-full h-full bg-gradient-to-b from-[#6275c975] via-[#4a7287] to-[#093337] rounded-lg sm:p-7 p-4 flex flex-col justify-between gap-5;
   }
   
   .grid-headtext {
@@ -80,7 +80,7 @@ body {
 
   /* projects section  */
   .arrow-btn {
-    @apply w-9 h-9 p-2 cursor-pointer active:scale-75 transition-all rounded-full arrow-gradient;
+    @apply w-9 h-9 max-sm:w-8 max-sm:h-8 p-2 max-sm:p-1.5 cursor-pointer active:scale-75 transition-all rounded-full arrow-gradient;
   }
 
   .tech-logo {
