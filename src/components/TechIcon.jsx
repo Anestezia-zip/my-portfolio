@@ -14,8 +14,8 @@ export const items = [
   { text: "Web Accessibility", src: "/assets/mobile.png" },
   { text: "AWS S3", src: "/assets/aws.png" },
   { text: "Web Marketing", src: "/assets/marketing.png" },
-  { text: "SEO", src: "/assets/seo.png" },
   { text: "Software Testing", src: "/assets/software-testing.png" },
+  { text: "SEO", src: "/assets/seo.png" },
   { text: "E-Commerce", src: "/assets/shopping.png" },
   { text: "Python", src: "/assets/python.png" },
   { text: "Django", src: "/assets/django.png" },
@@ -23,7 +23,7 @@ export const items = [
   { text: "PostgreSQL", src: "/assets/postgresql.png" },
 ];
 
-const IconButton = ({ src, text, color, direction = "right", ...props }) => {
+const TechIcon = ({ src, text, color, direction = "right", ...props }) => {
   const [hovered, setHovered] = useState(false);
   const textRef = useRef(null);
 
@@ -58,4 +58,4 @@ const IconButton = ({ src, text, color, direction = "right", ...props }) => {
   );
 };
 
-export default IconButton;
+export default TechIcon;

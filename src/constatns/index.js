@@ -186,7 +186,7 @@ export const navLinks = [
             },
             {
               id: 5,
-              name: 'postgreSQL',
+              name: 'PostgreSQL',
               path: '/assets/postgresql.png',
             }
           ],

@@ -5,11 +5,13 @@ import CanvasLoader from "../components/Loading";
 import ModernGadgets from "../components/ModernGadgets";
 import { useMediaQuery } from "react-responsive";
 import { calculateSizes } from "../constatns";
-import IconButton, { items } from "../components/IconButton";
+import TechIcon, { items } from "../components/TechIcon";
 import HeroCamera from "../components/HeroCamera";
 import Button from "../components/Button";
+import TechButton from "../components/TechButton";
 
 const Hero = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
   // Use media queries to determine screen size
   const isSmall = useMediaQuery({ maxWidth: 639.5 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -41,7 +43,7 @@ const Hero = () => {
                     : "animate-float-down-left"
                 }
               >
-                <IconButton text={item.text} src={item.src} direction="left" />
+                <TechIcon text={item.text} src={item.src} direction="left" />
               </div>
             ))}
           </div>
@@ -55,7 +57,7 @@ const Hero = () => {
                     : "animate-float-down-right"
                 }
               >
-                <IconButton text={item.text} src={item.src} direction="left" />
+                <TechIcon text={item.text} src={item.src} direction="left" />
               </div>
             ))}
           </div>
@@ -91,7 +93,7 @@ const Hero = () => {
                     : "animate-float-down-left"
                 }
               >
-                <IconButton text={item.text} src={item.src} />
+                <TechIcon text={item.text} src={item.src} />
               </div>
             ))}
           </div>
@@ -105,7 +107,7 @@ const Hero = () => {
                     : "animate-float-down-right"
                 }
               >
-                <IconButton text={item.text} src={item.src} />
+                <TechIcon text={item.text} src={item.src} />
               </div>
             ))}
           </div>
@@ -113,7 +115,7 @@ const Hero = () => {
 
         {/* Mobile tech item list */}
         <div className="relative -top-24 md:hidden flex items-center justify-center w-fit">
-          <div className="grid grid-cols-5 gap-6 p-4">
+          <div className="grid grid-cols-5 gap-5 p-4">
             {items.slice(0, 20).map((item, i) => (
               <div
                 key={i}
@@ -123,7 +125,14 @@ const Hero = () => {
                     : "animate-float-down-right"
                 }
               >
-                <IconButton text={item.text} src={item.src} />
+                <TechButton
+                  text={item.text}
+                  src={item.src}
+                  index={i}
+                  activeIndex={activeIndex}
+                  setActiveIndex={setActiveIndex}
+                  positionClass='-top-6 -left-2'
+                />
               </div>
             ))}
           </div>

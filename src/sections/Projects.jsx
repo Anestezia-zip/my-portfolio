@@ -6,10 +6,12 @@ import { Center, OrbitControls } from "@react-three/drei";
 import { calculateSizes } from "../constatns";
 import { useMediaQuery } from "react-responsive";
 import TvMonitor from "../components/TvMonitor";
+import TechButton from "../components/TechButton";
 
 const Projects = () => {
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
+  const [activeTechTag, setActiveTechTag] = useState(null);
 
   const isSmall = useMediaQuery({ maxWidth: 639.5 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -20,7 +22,10 @@ const Projects = () => {
   const currentCategory = projectsByTech[selectedCategoryIndex];
   const currentProject = currentCategory.projects[selectedProjectIndex];
   const projectCount = currentCategory.projects.length;
-  const totalProjects = projectsByTech.reduce((total, category) => total + category.projects.length, 0)
+  const totalProjects = projectsByTech.reduce(
+    (total, category) => total + category.projects.length,
+    0
+  );
 
   const handleNavigation = (direction) => {
     setSelectedProjectIndex((prevIndex) => {
@@ -34,7 +39,7 @@ const Projects = () => {
 
   const handleCategoryChange = (index) => {
     setSelectedCategoryIndex(index);
-    setSelectedProjectIndex(0)
+    setSelectedProjectIndex(0);
   };
 
   return (
@@ -44,13 +49,12 @@ const Projects = () => {
         Currently, my portfolio features a total of {totalProjects} projects
       </h4>
 
-
       {/* Category select */}
       <div className="flex items-center max-sm:gap-4 gap-8 lg:gap-96">
         <label htmlFor="category-select" className="sr-only">
           Select project category
         </label>
-        <select 
+        <select
           id="category-select"
           className="p-2 border rounded-md bg-white text-black"
           value={selectedCategoryIndex}
@@ -120,9 +124,15 @@ const Projects = () => {
           <div className="flex items-center justify-between flex-wrap gap-5">
             <div className="flex items-center gap-3">
               {currentProject.tags.map((tag, index) => (
-                <div key={index} className="tech-logo">
-                  <img src={tag.path} alt={tag.name} />
-                </div>
+                  <TechButton
+                    key={index}
+                    src={tag.path}
+                    text={tag.name}
+                    index={index}
+                    activeIndex={activeTechTag}
+                    setActiveIndex={setActiveTechTag}
+                    positionClass='-top-8 left-0'
+                  />
               ))}
             </div>
 
