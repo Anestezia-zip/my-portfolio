@@ -208,17 +208,16 @@ const Projects = () => {
                     texture={currentProject.texture}
                     onError={setVideoError}
                   />
-                  {videoError && (
-                    <div style={{ color: "red", marginTop: "20px" }}>
-                      {videoError}
-                    </div>
-                  )}
                 </group>
               </Suspense>
             </Center>
             <OrbitControls maxPolarAngle={Math.PI / 2} enableZoom={false} />
           </Canvas>
         </div>
+
+        {videoError && (
+          <div style={{ color: "red", marginTop: "20px" }}>{videoError}</div>
+        )}
       </div>
     </section>
   );
