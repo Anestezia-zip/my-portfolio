@@ -62,7 +62,7 @@ const About = () => {
         {/* Globe 3D model */}
         <div className="col-span-1 xl:row-span-4">
           <div className="grid-container">
-            <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center">
+            <div className="rounded-3xl w-full max-sm:h-[200px] sm:h-[326px] h-fit flex justify-center items-center">
               <GlobeComponent />
             </div>
             <div>

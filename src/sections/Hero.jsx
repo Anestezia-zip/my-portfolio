@@ -16,13 +16,11 @@ const Hero = () => {
   const isSmall = useMediaQuery({ maxWidth: 639.5 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
-  const isTallPhone = useMediaQuery({ maxWidth: 1024, minHeight: 1024 });
-  const heroHeight = isTallPhone ? "h-[75vh] max-h-[100vh]" : "min-h-screen";
 
   const sizes = calculateSizes(isSmall, isMobile, isTablet);
 
   return (
-    <section className={`${heroHeight} w-full flex flex-col relative`} id="home">
+    <section className="w-full flex flex-col relative" id="home">
       <div className="w-fit mx-auto flex flex-col sm:mt-28 mt-20 c-space gap-2">
         <h1 className="sm:text-3xl max-sm:mt-4 text-xl font-medium text-black text-center font-generalsans">
           Hi there, welcome to my portfolio!
@@ -32,9 +30,9 @@ const Hero = () => {
         </h2>
       </div>
 
-      <div className="flex max-md:flex-col items-center justify-center max-lg:gap-1 gap-12 px-4">
+      <div className="flex max-md:flex-col items-center justify-center max-lg:gap-4 gap-12 px-4 border">
         {/* Left item list */}
-        <div className="hidden md:flex justify-center gap-6 items-end w-fit mt-8">
+        <div className="hidden relative top-10 md:flex justify-center gap-6 items-end w-fit">
           <div className="relative -top-10 flex flex-col gap-6">
             {items.slice(0, 5).map((item, i) => (
               <div
@@ -66,7 +64,7 @@ const Hero = () => {
         </div>
 
         {/* Центр: 3D-сцена */}
-        <div className="relative -top-6 2xl:w-full h-[60vh] max-lg:h-[40vh] max-md:h-[30vh] max-2xl:w-[470px] max-[1000px]:w-[45%] max-sm:w-[80%]">
+        <div className="relative border-2 -top-6 w-full h-[240px] md:w-[320px] md:h-[320px] lg:w-[350px] 2xl:w-[700px] 2xl:h-[550px]">
           <Canvas className="w-full h-full">
             <Suspense fallback={<CanvasLoader />}>
               <PerspectiveCamera makeDefault position={[0, 0, 5]} />
@@ -84,7 +82,7 @@ const Hero = () => {
         </div>
 
         {/* Right item list */}
-        <div className="hidden md:flex justify-center gap-6 items-end w-fit mt-8">
+        <div className="hidden relative top-10 md:flex justify-center gap-6 items-end w-fit">
           <div className="flex flex-col z-10 gap-6">
             {items.slice(10, 15).map((item, i) => (
               <div
@@ -142,12 +140,12 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="absolute xl:bottom-8 2xl:bottom-20 max-xl:bottom-0 max-sm:-bottom-2 max-[376px]:-bottom-4 left-0 right-0 w-fit mx-auto z-10 c-space">
+      <div className="relative max-lg:top-14 max-md:top-0 left-0 right-0 w-fit mx-auto z-10 c-space mt-2">
         <a href="#contact" className="w-fit">
           <Button
             name="Let's work together"
             isBeam
-            containerClass="sm:w-fit w-full sm:min-w-96 bg-gradient-to-b from-teal-900 via-gray-800 to-black"
+            containerClass="sm:w-fit w-full sm:min-w-96 2xl:text-3xl bg-gradient-to-b from-teal-900 via-gray-800 to-black"
           />
         </a>
       </div>

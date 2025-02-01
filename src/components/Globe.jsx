@@ -1,31 +1,30 @@
 import { useEffect, useRef } from "react";
 import Globe from "react-globe.gl";
+import { useMediaQuery } from "react-responsive";
 
 const GlobeComponent = () => {
   const globeRef = useRef();
-
+  const isMobile = useMediaQuery({ maxWidth: 768 });
+  
   useEffect(() => {
-    const isMobile = window.innerWidth <= 768; // Указываем максимальную ширину для мобильных устройств
-
     if (globeRef.current) {
       const globe = globeRef.current;
       const controls = globe.controls();
 
-      // Если на мобильном устройстве, отключаем зум
       if (isMobile) {
-        controls.enableZoom = false;
+        controls.enableZoom = false; // Отключаем зум на мобильных
       }
 
-      controls.enableRotate = true; // Включаем вращение
-      controls.enablePan = true; // Включаем панорамирование
+      controls.enableRotate = true;
+      controls.enablePan = true;
     }
-  }, []); // Эффект сработает только один раз после монтирования компонента
+  }, [isMobile]); // Перезапускаем эффект при изменении isMobile
 
   return (
     <Globe
       ref={globeRef}
-      height={326}
-      width={326}
+      height={isMobile ? 200 : 326} // Уменьшаем размер на мобилках
+      width={isMobile ? 200 : 326}
       backgroundColor="rgba(0, 0, 0, 0)"
       backgroundImageOpacity={0.5}
       showAtmosphere

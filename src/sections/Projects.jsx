@@ -44,7 +44,7 @@ const Projects = () => {
   };
 
   return (
-    <section className="c-space my-20" id="projects">
+    <section className="c-space my-20 sm:mt-40" id="projects">
       <h3 className="head-text mb-8">My projects</h3>
       <h4 className="text-lg mb-4">
         Currently, my portfolio features a total of {totalProjects} projects

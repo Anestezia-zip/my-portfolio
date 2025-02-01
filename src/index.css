@@ -133,11 +133,6 @@ body {
   .field-input {
     @apply w-full px-5 py-2 min-h-14 rounded-lg placeholder:text-white-500 text-lg shadow-2xl focus:outline-none;
   }
-
-  /*  footer */
-  .social-icon {
-    @apply w-12 h-12 rounded-full flex justify-center items-center bg-black-300 border border-black-200;
-  }
 }
 
 .waving-hand {
