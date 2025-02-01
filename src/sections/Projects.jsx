@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 import { projectsByTech } from "../constatns";
 import { Canvas } from "@react-three/fiber";
 import CanvasLoader from "../components/Loading";
@@ -14,7 +14,10 @@ const Projects = () => {
   const [activeTechTag, setActiveTechTag] = useState(null);
   const [videoError, setVideoError] = useState(null);
   console.log("Video error state:", videoError);  // Добавить здесь для отладки
-
+  // Сбрасываем состояние ошибки при перезагрузке страницы
+  useEffect(() => {
+    setVideoError(null);
+  }, []);
 
   const isSmall = useMediaQuery({ maxWidth: 639.5 });
   const isMobile = useMediaQuery({ maxWidth: 767 });

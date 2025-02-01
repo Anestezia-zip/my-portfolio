@@ -23,6 +23,7 @@ const TvMonitor = (props) => {
     "/models/tv/tv__glass_table_sketchfab.glb"
   );
 
+  
   const videoTexture = useVideoTexture(props.texture)
  // Видео элемент
   useEffect(() => {
