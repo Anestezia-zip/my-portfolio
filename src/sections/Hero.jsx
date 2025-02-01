@@ -132,6 +132,7 @@ const Hero = () => {
                   activeIndex={activeIndex}
                   setActiveIndex={setActiveIndex}
                   positionClass="-top-7 left-1/2 transform -translate-x-1/2"
+                  color="w-16 h-16"
                   />
               </div>
             ))}

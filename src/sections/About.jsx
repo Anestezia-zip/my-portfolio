@@ -18,13 +18,14 @@ const About = () => {
     <section className="c-space my-20" id="about">
       <div className="grid xl:grid-cols-3 xl:grid-rows-6 md:grid-cols-2 grid-cols-1 gap-5 h-full">
 
+        {/* My name */}
         <div className="col-span-1 xl:row-span-3">
           <div className="grid-container">
             <div className="h-full flex items-center justify-center">
               <img
                 src="assets/grid-1.png"
                 alt="Girl developer icon"
-                className="w-full sm:h-[160px] h-[70%] object-contain"
+                className="w-full sm:h-[160px] max-sm:h-[150px] h-[70%] object-contain"
               />
             </div>
 
@@ -37,14 +38,14 @@ const About = () => {
             </div>
           </div>
         </div>
-
+        {/* My tech stack */}
         <div className="col-span-1 xl:row-span-3">
           <div className="grid-container">
             <div className="h-full flex items-center justify-center">
               <img
                 src="assets/brain.png"
                 alt="grid-2"
-                className="w-full sm:h-[140px] h-[68%] object-contain"
+                className="w-full sm:h-[140px] max-sm:h-[125px] h-[68%] object-contain"
               />
             </div>
 
@@ -58,7 +59,7 @@ const About = () => {
             </div>
           </div>
         </div>
-
+        {/* Globe 3D model */}
         <div className="col-span-1 xl:row-span-4">
           <div className="grid-container">
             <div className="rounded-3xl w-full sm:h-[326px] h-fit flex justify-center items-center">
@@ -79,14 +80,14 @@ const About = () => {
             </div>
           </div>
         </div>
-
+        {/* My passion */}
         <div className="xl:col-span-2 xl:row-span-3">
           <div className="grid-container">
           <div className="h-full flex items-center justify-center">
             <img
               src="assets/passion.gif"
               alt="grid-3"
-              className="w-full sm:h-[200px] h-fit object-contain"
+              className="w-full sm:h-[200px] max-sm:h-[160px] h-fit object-contain"
             />
           </div>
 
@@ -103,7 +104,7 @@ const About = () => {
             </div>
           </div>
         </div>
-
+        {/* Contact */}
         <div className="xl:col-span-1 xl:row-span-2">
           <div className="grid-container">
           <div className="h-full flex items-center justify-center">

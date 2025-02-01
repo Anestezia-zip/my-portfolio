@@ -44,7 +44,7 @@ const Projects = () => {
   };
 
   return (
-    <section className="c-space my-20">
+    <section className="c-space my-20" id="projects">
       <h3 className="head-text mb-8">My projects</h3>
       <h4 className="text-lg mb-4">
         Currently, my portfolio features a total of {totalProjects} projects
@@ -213,13 +213,13 @@ const Projects = () => {
         </div>
 
         <div
-          className="flex items-center max-sm:text-sm lg:hidden"
+          className="max-sm:text-xs lg:hidden"
           onClick={() => setIsTooltipVisible(!isTooltipVisible)}
         >
-          <p className="px-2 py-0.5">Don't see the video?</p>
-          <img className="w-5 h-5" src="/assets/info.png" alt="Info icon" />
+          <p className="flex items-center gap-1 py-0.5"><span>Don't see the video?</span> <img className="w-4 h-4" src="/assets/info.png" alt="Info icon" /></p>
+         
           {isTooltipVisible && (
-            <div className="ml-2 text-green-400 bg-black-500 rounded px-2 py-0.5">
+            <div className="w-fit text-green-400 bg-black-500 rounded px-2 py-0.5">
               Try turning off the power-saving mode
             </div>
           )}
