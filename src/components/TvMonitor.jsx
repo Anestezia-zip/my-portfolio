@@ -8,8 +8,12 @@ Title: Game Ready UHD Curved TV
 
 import React, { useEffect, useRef, useState } from "react";
 import { useGLTF, useVideoTexture } from "@react-three/drei";
+import { Text } from "@react-three/drei";
 import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
+import gsap from 'gsap';
+import * as THREE from "three"; // Импортируем THREE
+
+
 
 const TvMonitor = (props) => {
   const [videoError, setVideoError] = useState(null);
@@ -19,43 +23,42 @@ const TvMonitor = (props) => {
     "/models/tv/tv__glass_table_sketchfab.glb"
   );
 
-  const txt = useVideoTexture(props.texture, {
-    muted: true, // Отключаем звук
-    loop: true, // Зацикливаем
-    autoPlay: true, // Включаем автозапуск
-    playsInline: true, // Для iPhone
-    crossOrigin: "anonymous", // Исправляет проблемы с кэшированием
-  });
+  const videoTexture = useVideoTexture(props.texture)
 
+  // Видео элемент
   useEffect(() => {
-    const handlePlay = () => {
-      console.log("Video texture is playing");
-      setVideoError(null); // Сбрасываем ошибку, если видео начинает воспроизводиться
-    };
+    const video = document.createElement("video");
+    video.src = props.texture; // Указываем путь к видео
+    video.muted = true;
+    video.loop = true;
+    video.play(); // Попробуем запустить видео сразу
+    video.playbackRate = 1;
 
-    const handleError = (e) => {
+    video.addEventListener("play", () => {
+      console.log("Video texture is playing");
+      setVideoError(null); // Сбрасываем ошибку
+    });
+
+    video.addEventListener("error", (e) => {
       console.error("Error playing video texture:", e);
       setVideoError("Please disable low power mode on iOS to see the video");
-    };
-
-    // Добавляем события play и error
-    txt.addEventListener("play", handlePlay, false);
-    txt.addEventListener("error", handleError, false);
-
-    // Убираем обработчики событий при размонтировании компонента
-    return () => {
-      txt.removeEventListener("play", handlePlay, false);
-      txt.removeEventListener("error", handleError, false);
-    };
-  }, [txt]);
-
-  useGSAP(() => {
-    gsap.from(group.current.rotation, {
-      y: -Math.PI / 4,
-      duration: 1,
-      ease: "power3.out",
     });
-  }, [txt]);
+
+    // Очистка ресурса
+    return () => {
+      video.pause();
+      video.src = "";
+    };
+  }, [props.texture]);   
+
+  // useGSAP(() => {
+  //   gsap.from(group.current.rotation, {
+  //     y: -Math.PI / 4,
+  //     duration: 1,
+  //     ease: 'power3.out'
+  //   })
+  // }, [txt])
+
 
   return (
     <group ref={group} {...props} dispose={null}>
@@ -181,16 +184,8 @@ const TvMonitor = (props) => {
                   geometry={nodes.Object_21.geometry}
                   material={materials.TV_Screen}
                 >
-                  <meshBasicMaterial map={txt} />
-                  {videoError && (
-                    <group position={[0, 0, 1]}>
-                      <text
-                        color="red"
-                        fontSize={0.5}
-                        children={videoError} // Показываем ошибку, если видео не воспроизводится
-                      />
-                    </group>
-                  )}
+                  {videoTexture && <meshBasicMaterial map={videoTexture} />}
+                  {/* <meshBasicMaterial map={txt}/> */}
                 </mesh>
                 <mesh
                   name="Object_22"
@@ -418,6 +413,11 @@ const TvMonitor = (props) => {
           </group>
         </group>
       </group>
+      {videoError && (
+        <Text color="red" fontSize={0.5} position={[0, 0, 1]}>
+          {videoError}
+        </Text>
+      )}
     </group>
   );
 };
