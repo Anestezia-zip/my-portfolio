@@ -131,7 +131,7 @@ body {
   }
 
   .field-input {
-    @apply w-full px-5 py-2 min-h-14 rounded-lg placeholder:text-white-500 text-lg shadow-2xl focus:outline-none;
+    @apply w-full px-5 py-2 min-h-14 max-sm:min-h-8 rounded-lg placeholder:text-white-500 text-lg shadow-2xl focus:outline-none;
   }
 }
 

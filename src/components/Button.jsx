@@ -1,6 +1,6 @@
 const Button = ({ name, isBeam = false, containerClass }) => {
     return (
-      <button className={`btn ${containerClass}`}>
+      <div className={`btn ${containerClass}`}>
         {isBeam && (
           <span className="relative flex h-3 w-3">
             <span className="btn-ping bg-green-400"></span>
@@ -8,7 +8,7 @@ const Button = ({ name, isBeam = false, containerClass }) => {
           </span>
         )}
         {name}
-      </button>
+      </div>
     );
   };
   

@@ -20,7 +20,7 @@ const Hero = () => {
   const sizes = calculateSizes(isSmall, isMobile, isTablet);
 
   return (
-    <section className="w-full flex flex-col relative" id="home">
+    <section className="w-full flex flex-col relative" id="home" role="banner">
       <div className="w-fit mx-auto flex flex-col sm:mt-28 mt-20 c-space gap-2">
         <h1 className="sm:text-3xl max-sm:mt-4 text-xl font-medium text-black text-center font-generalsans">
           Hi there, welcome to my portfolio!
@@ -30,7 +30,7 @@ const Hero = () => {
         </h2>
       </div>
 
-      <div className="flex max-md:flex-col items-center justify-center max-lg:gap-4 gap-12 px-4 border">
+      <div className="flex max-md:flex-col items-center justify-center max-lg:gap-4 gap-12 px-4">
         {/* Left item list */}
         <div className="hidden relative top-10 md:flex justify-center gap-6 items-end w-fit">
           <div className="relative -top-10 flex flex-col gap-6">
@@ -43,7 +43,13 @@ const Hero = () => {
                     : "animate-float-down-left"
                 }
               >
-                <TechIcon text={item.text} src={item.src} direction="left" />
+                <TechIcon
+                  text={item.text}
+                  src={item.src}
+                  direction="left"
+                  tabIndex="0"
+                  aria-label={`Technical icon: ${item.text}`}
+                />
               </div>
             ))}
           </div>
@@ -63,8 +69,12 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Центр: 3D-сцена */}
-        <div className="relative border-2 -top-6 w-full h-[240px] md:w-[320px] md:h-[320px] lg:w-[350px] 2xl:w-[700px] 2xl:h-[550px]">
+        {/* Centre: 3D-сцена */}
+        <div
+          className="relative-top-6 w-full h-[240px] md:w-[320px] md:h-[320px] lg:w-[350px] 2xl:w-[700px] 2xl:h-[550px]"
+          aria-hidden="true"
+          role="presentation"
+        >
           <Canvas className="w-full h-full">
             <Suspense fallback={<CanvasLoader />}>
               <PerspectiveCamera makeDefault position={[0, 0, 5]} />
@@ -93,7 +103,12 @@ const Hero = () => {
                     : "animate-float-down-left"
                 }
               >
-                <TechIcon text={item.text} src={item.src} />
+                <TechIcon
+                  text={item.text}
+                  src={item.src}
+                  tabIndex="0"
+                  aria-label={`Technical icon: ${item.text}`}
+                />
               </div>
             ))}
           </div>
@@ -133,19 +148,22 @@ const Hero = () => {
                   setActiveIndex={setActiveIndex}
                   positionClass="-top-7 left-1/2 transform -translate-x-1/2"
                   color="w-16 h-16"
-                  />
+                  tabIndex="0"
+                  aria-label={`Technical icon: ${item.text}`}
+                />
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="relative max-lg:top-14 max-md:top-0 left-0 right-0 w-fit mx-auto z-10 c-space mt-2">
+      <div className="relative max-2xl:top-14 max-md:top-0 left-0 right-0 w-fit mx-auto z-10 c-space mt-2">
         <a href="#contact" className="w-fit">
           <Button
             name="Let's work together"
             isBeam
             containerClass="sm:w-fit w-full sm:min-w-96 2xl:text-3xl bg-gradient-to-b from-teal-900 via-gray-800 to-black"
+            aria-label="Contact me"
           />
         </a>
       </div>
