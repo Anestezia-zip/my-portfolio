@@ -16,8 +16,8 @@ const Hero = () => {
   const isSmall = useMediaQuery({ maxWidth: 639.5 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
-  const isTabletHeight = useMediaQuery({ minHeight: 1024 });
-  const heroHeight = isTabletHeight ? "h-[75vh]" : "min-h-screen";
+  const isTallPhone = useMediaQuery({ maxWidth: 1024, minHeight: 1024 });
+  const heroHeight = isTallPhone ? "h-[75vh] max-h-[100vh]" : "min-h-screen";
 
   const sizes = calculateSizes(isSmall, isMobile, isTablet);
 
