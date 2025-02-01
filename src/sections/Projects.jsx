@@ -45,10 +45,12 @@ const Projects = () => {
 
   return (
     <section className="c-space my-20 sm:mt-40" id="projects">
-      <h3 className="head-text mb-8">My projects</h3>
-      <h4 className="text-lg mb-4">
+      <h3 className="head-text mb-8" id="projects-heading">
+        My projects
+      </h3>
+      <p className="text-lg mb-4" aria-live="polite">
         Currently, my portfolio features a total of {totalProjects} projects
-      </h4>
+      </p>
 
       {/* Category select */}
       <div className="flex items-center max-sm:gap-4 gap-8 lg:gap-96">
@@ -60,7 +62,7 @@ const Projects = () => {
           className="p-2 border rounded-md bg-white text-black"
           value={selectedCategoryIndex}
           onChange={(e) => handleCategoryChange(Number(e.target.value))}
-          aria-label="Project category"
+          aria-labelledby="projects-heading"
         >
           {projectsByTech.map((category, index) => (
             <option key={category.tech} value={index}>
@@ -84,11 +86,13 @@ const Projects = () => {
             <button
               className="arrow-btn max-sm:hidden"
               onClick={() => handleNavigation("previous")}
+              aria-label="View previous project"
             >
               <img
                 src="/assets/arrow-left.png"
                 alt="left arrow"
                 className="pr-0.5"
+                aria-hidden="true"
               />
             </button>
 
@@ -106,11 +110,13 @@ const Projects = () => {
             <button
               className="arrow-btn max-sm:hidden"
               onClick={() => handleNavigation("next")}
+              aria-label="View next project"
             >
               <img
                 src="/assets/arrow-right.png"
                 alt="right arrow"
                 className="pl-0.5"
+                aria-hidden="true"
               />
             </button>
           </div>
@@ -143,12 +149,14 @@ const Projects = () => {
                 href={currentProject.href}
                 target="_blank"
                 rel="noreferrer"
+                aria-label={`Check live site: ${currentProject.title}`}
               >
                 <p>Check live site</p>
                 <img
                   src="/assets/increase.png"
                   alt="arrow"
                   className="w-6 h-6"
+                  aria-hidden="true"
                 />
               </a>
               <a
@@ -156,12 +164,14 @@ const Projects = () => {
                 href={currentProject.githubHref}
                 target="_blank"
                 rel="noreferrer"
+                aria-label={`Check github code for ${currentProject.title}`}
               >
                 <p>Check github code</p>
                 <img
                   src="/assets/github.png"
                   alt="arrow"
                   className="w-6 h-6 bg-white rounded-full"
+                  aria-hidden="true"
                 />
               </a>
             </div>
@@ -215,11 +225,24 @@ const Projects = () => {
         <div
           className="max-sm:text-xs lg:hidden"
           onClick={() => setIsTooltipVisible(!isTooltipVisible)}
+          aria-expanded={isTooltipVisible}
+          aria-controls="tooltip"
         >
-          <p className="flex items-center gap-1 py-0.5"><span>Don't see the video?</span> <img className="w-4 h-4" src="/assets/info.png" alt="Info icon" /></p>
-         
+          <p className="flex items-center gap-1 py-0.5">
+            <span>Don't see the video?</span>{" "}
+            <img
+              className="w-4 h-4"
+              src="/assets/info.png"
+              alt="Info icon"
+              aria-hidden="true"
+            />
+          </p>
+
           {isTooltipVisible && (
-            <div className="w-fit text-green-400 bg-black-500 rounded px-2 py-0.5">
+            <div
+              id="tooltip"
+              className="w-fit text-green-400 bg-black-500 rounded px-2 py-0.5"
+            >
               Try turning off the power-saving mode
             </div>
           )}
