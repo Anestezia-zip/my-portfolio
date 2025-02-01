@@ -25,38 +25,38 @@ const TvMonitor = (props) => {
 
   const videoTexture = useVideoTexture(props.texture)
  // Видео элемент
- useEffect(() => {
-  const video = document.createElement("video");
-  video.src = props.texture; // Указываем путь к видео
-  video.muted = true;
-  video.loop = true;
-  video.playbackRate = 1;
+  useEffect(() => {
+    const video = document.createElement("video");
+    video.src = props.texture; // Указываем путь к видео
+    video.muted = true;
+    video.loop = true;
+    video.playbackRate = 1;
 
-  // Пытаемся запустить видео
-  video.play().then(() => {
-    console.log("Video texture is playing");
-    setVideoErrorState(null); // Сбрасываем ошибку
-    if (props.setVideoError) {
-      props.setVideoError(null); // Передаем ошибку обратно в родительский компонент
-    }
-  }).catch((error) => {
-    console.error("Error playing video texture:", error);
-    const errorMessage = "Please disable low power mode on iOS to see the video";
-    setVideoErrorState(errorMessage); // Устанавливаем ошибку внутри компонента
-    if (props.setVideoError) {
-      props.setVideoError(errorMessage); // Передаем ошибку обратно в родительский компонент
-    }
+    // Пытаемся запустить видео
+    video.play().then(() => {
+      console.log("Video texture is playing");
+      setVideoErrorState(null); // Сбрасываем ошибку
+      if (props.setVideoError) {
+        props.setVideoError(null); // Передаем ошибку обратно в родительский компонент
+      }
+    }).catch((error) => {
+      console.error("Error playing video texture:", error);
+      const errorMessage = "Please disable low power mode on iOS to see the video";
+      setVideoErrorState(errorMessage); // Устанавливаем ошибку внутри компонента
+      if (props.setVideoError) {
+        props.setVideoError(errorMessage); // Передаем ошибку обратно в родительский компонент
+      }
 
-    // Добавляем элементы управления для видео, если ошибка
-    video.setAttribute("controls", "controls");
-  });
+      // Добавляем элементы управления для видео, если ошибка
+      video.setAttribute("controls", "controls");
+    });
 
-  // Очистка ресурса
-  return () => {
-    video.pause();
-    video.src = "";
-  };
-}, [props.texture, props.setVideoError]);
+    // Очистка ресурса
+    return () => {
+      video.pause();
+      video.src = "";
+    };
+  }, [props.texture, props.setVideoError]);
 
   // useGSAP(() => {
   //   gsap.from(group.current.rotation, {
@@ -421,9 +421,9 @@ const TvMonitor = (props) => {
         </group>
       </group>
       {videoError && (
-        <Text color="red" fontSize={0.5} position={[0, 0, 1]}>
-          {videoError}
-        </Text>
+        <Text color="red" fontSize={0.1} maxWidth={1} scale={1} position={[0.3, 0.25, 0.4]}>
+        {videoError}
+      </Text>
       )}
     </group>
   );
