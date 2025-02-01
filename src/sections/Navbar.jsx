@@ -4,8 +4,8 @@ import { navLinks } from "../constatns";
 const NavItems = ({ onClick = () => {} }) => (
   <ul className="nav-ul">
     {navLinks.map((item) => (
-      <li key={item.id} className="nav-li border border-green-400">
-        <a href={item.href} className="nav-li_a block border border-red-400 min-w-full" onClick={onClick}>
+      <li key={item.id} className="nav-li">
+        <a href={item.href} className="nav-li_a block min-w-full" onClick={onClick}>
           {item.name}
         </a>
       </li>

@@ -3,8 +3,8 @@ const Button = ({ name, isBeam = false, containerClass }) => {
       <button className={`btn ${containerClass}`}>
         {isBeam && (
           <span className="relative flex h-3 w-3">
-            <span className="btn-ping"></span>
-            <span className="btn-ping_dot"></span>
+            <span className="btn-ping bg-green-400"></span>
+            <span className="btn-ping_dot bg-green-300"></span>
           </span>
         )}
         {name}

@@ -21,7 +21,7 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen w-full flex flex-col relative" id="home">
-      <div className="w-full mx-auto flex flex-col sm:mt-28 mt-24 c-space gap-2">
+      <div className="w-fit mx-auto flex flex-col sm:mt-28 mt-24 c-space gap-2">
         <h1 className="sm:text-3xl max-sm:mt-4 text-xl font-medium text-black text-center font-generalsans">
           Hi there, welcome to my portfolio!
         </h1>
@@ -30,9 +30,9 @@ const Hero = () => {
         </h2>
       </div>
 
-      <div className="flex max-md:flex-col items-center justify-center max-lg:gap-8 gap-16 px-4">
+      <div className="border flex max-md:flex-col items-center justify-center max-lg:gap-0 gap-12 px-4">
         {/* Left item list */}
-        <div className="hidden md:flex justify-center gap-6 items-end w-fit mt-8">
+        <div className="hidden border md:flex justify-center gap-6 items-end w-fit mt-8">
           <div className="relative -top-10 flex flex-col gap-6">
             {items.slice(0, 5).map((item, i) => (
               <div
@@ -64,7 +64,7 @@ const Hero = () => {
         </div>
 
         {/* Центр: 3D-сцена */}
-        <div className="relative -top-6 2xl:w-full h-[60vh] max-2xl:w-[500px] max-[860px]:w-[56%] max-lg:h-[55vh] max-md:h-[30vh]">
+        <div className="relative border border-green-400 -top-6 2xl:w-full h-[60vh] max-2xl:w-[500px] max-[1000px]:w-[40%] max-lg:h-[55vh] max-md:h-[30vh]">
           <Canvas className="w-full h-full">
             <Suspense fallback={<CanvasLoader />}>
               <PerspectiveCamera makeDefault position={[0, 0, 5]} />
@@ -82,7 +82,7 @@ const Hero = () => {
         </div>
 
         {/* Right item list */}
-        <div className="hidden md:flex justify-center gap-6 items-end w-fit mt-8">
+        <div className="hidden border md:flex justify-center gap-6 items-end w-fit mt-8">
           <div className="flex flex-col z-10 gap-6">
             {items.slice(10, 15).map((item, i) => (
               <div

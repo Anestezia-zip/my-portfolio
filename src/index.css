@@ -49,11 +49,11 @@ body {
   }
 
   .btn-ping {
-    @apply animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75;
+    @apply animate-ping absolute inline-flex h-full w-full rounded-full opacity-75;
   }
 
   .btn-ping_dot {
-    @apply relative inline-flex rounded-full h-3 w-3 bg-green-300;
+    @apply relative inline-flex rounded-full h-3 w-3;
   }
 
   /* hero section */
@@ -130,16 +130,12 @@ body {
     @apply max-w-xl relative z-10 sm:px-10 px-5 mt-12;
   }
 
-  .field-label {
-    @apply text-lg text-white-600;
-  }
-
   .field-input {
-    @apply w-full bg-black-300 px-5 py-2 min-h-14 rounded-lg placeholder:text-white-500 text-lg text-white-800 shadow-black-200 shadow-2xl focus:outline-none;
+    @apply w-full px-5 py-2 min-h-14 rounded-lg placeholder:text-white-500 text-lg shadow-2xl focus:outline-none;
   }
 
   .field-btn {
-    @apply bg-black-500 px-5 py-2 min-h-12 rounded-lg shadow-black-200 shadow-2xl flex justify-center items-center text-lg text-white gap-3;
+    @apply bg-black-500 px-5 py-2 min-h-12 rounded-lg shadow-xl flex justify-center items-center text-lg text-white gap-3;
   }
 
   .field-btn_arrow {
@@ -158,6 +154,14 @@ body {
   animation-iteration-count: infinite;
   transform-origin: 70% 70%;
   display: inline-block;
+}
+
+.shadow-terminal {
+  box-shadow: 
+    0px -4px 20px rgba(0, 0, 0, 0.3), /* Внешняя тень (наверх) */
+    inset 0px 4px 6px rgba(0, 0, 0, 0.2); /* Внутренняя тень */
+  border-radius: 10px; /* Скругление углов */
+  padding: 10px;
 }
 
 .arrow-gradient {
