@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 
 const TechButton = ({ src, text, color = '', index, activeIndex, setActiveIndex, ...props }) => {
     const buttonRef = useRef(null); // Ссылка на саму кнопку

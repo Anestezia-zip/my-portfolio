@@ -1,26 +1,26 @@
 import React, { useRef, useState } from "react";
 
 export const items = [
-  { text: "HTML5 & CSS3", src: "/assets/coding.png" },
+  { text: "React", src: "/assets/react.png" },
   { text: "SCSS", src: "/assets/format.png" },
   { text: "JavaScript", src: "/assets/js.png" },
   { text: "TypeScript", src: "/assets/ts.png" },
   { text: "GIT", src: "/assets/git.png" },
-  { text: "React", src: "/assets/react.png" },
+  { text: "HTML5 & CSS3", src: "/assets/coding.png" },
   { text: "TailwindCSS", src: "/assets/tailwind.png" },
   { text: "Angular", src: "/assets/angular.png" },
   { text: "Responsive Design", src: "/assets/responsive.png" },
   { text: "Three.js", src: "/assets/three.png" },
   { text: "Web Accessibility", src: "/assets/mobile.png" },
-  { text: "AWS S3", src: "/assets/aws.png" },
+  { text: "E-Commerce", src: "/assets/shopping.png" },
   { text: "Web Marketing", src: "/assets/marketing.png" },
   { text: "Software Testing", src: "/assets/software-testing.png" },
-  { text: "SEO", src: "/assets/seo.png" },
-  { text: "E-Commerce", src: "/assets/shopping.png" },
+  { text: "PostgreSQL", src: "/assets/postgresql.png" },
+  { text: "AWS S3", src: "/assets/aws.png" },
   { text: "Python", src: "/assets/python.png" },
   { text: "Django", src: "/assets/django.png" },
   { text: "MySQL", src: "/assets/mysql.png" },
-  { text: "PostgreSQL", src: "/assets/postgresql.png" },
+  { text: "SEO", src: "/assets/seo.png" },
 ];
 
 const TechIcon = ({ src, text, color, direction = "right", ...props }) => {

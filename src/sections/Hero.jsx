@@ -21,7 +21,7 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen w-full flex flex-col relative" id="home">
-      <div className="w-fit mx-auto flex flex-col sm:mt-28 mt-24 c-space gap-2">
+      <div className="w-fit mx-auto flex flex-col sm:mt-28 mt-20 c-space gap-2">
         <h1 className="sm:text-3xl max-sm:mt-4 text-xl font-medium text-black text-center font-generalsans">
           Hi there, welcome to my portfolio!
         </h1>
@@ -30,9 +30,9 @@ const Hero = () => {
         </h2>
       </div>
 
-      <div className="border flex max-md:flex-col items-center justify-center max-lg:gap-0 gap-12 px-4">
+      <div className="flex max-md:flex-col items-center justify-center max-lg:gap-1 gap-12 px-4">
         {/* Left item list */}
-        <div className="hidden border md:flex justify-center gap-6 items-end w-fit mt-8">
+        <div className="hidden md:flex justify-center gap-6 items-end w-fit mt-8">
           <div className="relative -top-10 flex flex-col gap-6">
             {items.slice(0, 5).map((item, i) => (
               <div
@@ -64,7 +64,7 @@ const Hero = () => {
         </div>
 
         {/* Центр: 3D-сцена */}
-        <div className="relative border border-green-400 -top-6 2xl:w-full h-[60vh] max-2xl:w-[500px] max-[1000px]:w-[45%] max-lg:h-[55vh] max-md:h-[30vh]">
+        <div className="relative -top-6 2xl:w-full h-[60vh] max-lg:h-[40vh] max-md:h-[30vh] max-2xl:w-[470px] max-[1000px]:w-[45%] max-sm:w-[80%]">
           <Canvas className="w-full h-full">
             <Suspense fallback={<CanvasLoader />}>
               <PerspectiveCamera makeDefault position={[0, 0, 5]} />
@@ -82,7 +82,7 @@ const Hero = () => {
         </div>
 
         {/* Right item list */}
-        <div className="hidden border md:flex justify-center gap-6 items-end w-fit mt-8">
+        <div className="hidden md:flex justify-center gap-6 items-end w-fit mt-8">
           <div className="flex flex-col z-10 gap-6">
             {items.slice(10, 15).map((item, i) => (
               <div
@@ -114,7 +114,7 @@ const Hero = () => {
         </div>
 
         {/* Mobile tech item list */}
-        <div className="relative -top-24 md:hidden flex items-center justify-center w-fit">
+        <div className="relative -top-10 max-[360px]:-top-14 md:hidden flex items-center justify-center w-fit">
           <div className="grid grid-cols-5 gap-5 p-4">
             {items.slice(0, 20).map((item, i) => (
               <div
@@ -140,7 +140,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="absolute xl:bottom-8 2xl:bottom-20 max-xl:bottom-6 left-0 right-0 w-fit mx-auto z-10 c-space">
+      <div className="absolute xl:bottom-8 2xl:bottom-20 max-xl:bottom-0 max-sm:-bottom-2 max-[376px]:-bottom-4 left-0 right-0 w-fit mx-auto z-10 c-space">
         <a href="#about" className="w-fit">
           <Button
             name="Let's work together"

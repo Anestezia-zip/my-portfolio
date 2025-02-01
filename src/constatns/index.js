@@ -24,8 +24,8 @@ export const navLinks = [
 
   export const calculateSizes = (isSmall, isMobile, isTablet, isLaptop) => {
     return {
-      deskScale: isSmall ? 4.5 : isMobile ? 6 : isTablet ? 4.5 : 6,
-      deskPosition: isSmall ? [-0.2, 0, 0] : isMobile ? [-0.2, -0.5, 0] : [-0.3, -0.7, 0],
+      deskScale: isSmall ? 7 : isMobile ? 6 : isTablet ? 4 : 6,
+      deskPosition: isSmall ? [-0.2, -0.7, 0] : isMobile ? [-0.2, -0.5, 0] : isTablet ? [-0.3, -0.5, 0] : [-0.3, -0.7, 0],
       tvScale: isSmall ? 3.6 : isTablet ? 2.3 : isLaptop ? 2.8 : 3,
       tvPosition: isSmall ? [-1.1, -0.3, 0] : isTablet ? [-0.7, -0.3, 0] : [-0.8, 0, 0],
     };
