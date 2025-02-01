@@ -6,7 +6,7 @@ Source: https://sketchfab.com/3d-models/game-ready-uhd-curved-tv-dbd3002920dd4ac
 Title: Game Ready UHD Curved TV
 */
 
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { useGLTF, useVideoTexture } from "@react-three/drei";
 import { useGSAP } from "@gsap/react";
 import gsap from 'gsap';
@@ -19,20 +19,12 @@ const TvMonitor = (props) => {
   );
 
   const txt = useVideoTexture(props.texture, {
-    muted: true,
-    loop: true,
-    autoPlay: true,
-    playsInline: true,
-    crossOrigin: "anonymous",
-  });
-  
-  useEffect(() => {
-    if (txt.image) {
-      txt.image.setAttribute("playsinline", "true");
-      txt.image.setAttribute("muted", "true");
-    }
-  }, [txt]);
-     
+    muted: true, // Отключаем звук
+    loop: true,  // Зацикливаем
+    autoPlay: true, // Включаем автозапуск
+    playsInline: true, // Для iPhone
+    crossOrigin: "anonymous", // Исправляет проблемы с кэшированием
+  });    
 
   useGSAP(() => {
     gsap.from(group.current.rotation, {
