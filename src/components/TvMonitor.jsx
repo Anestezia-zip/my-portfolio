@@ -16,7 +16,7 @@ import * as THREE from "three"; // Импортируем THREE
 
 
 const TvMonitor = (props) => {
-  const [videoError, setVideoError] = useState(null);
+  const [videoError, setVideoErrorState] = useState(null);
 
   const group = useRef();
   const { nodes, materials } = useGLTF(
@@ -37,14 +37,18 @@ const TvMonitor = (props) => {
     video.addEventListener("play", () => {
       console.log("Video texture is playing");
       setVideoErrorState(null); // Сбрасываем ошибку
-      props.setVideoError(null);
+      if (props.setVideoError) {
+        props.setVideoError(null); // Передаем ошибку обратно в родительский компонент
+      }
     });
 
     video.addEventListener("error", (e) => {
       console.error("Error playing video texture:", e);
       const errorMessage = "Please disable low power mode on iOS to see the video";
       setVideoErrorState(errorMessage); // Устанавливаем ошибку внутри компонента
-      props.setVideoError(errorMessage);
+      if (props.setVideoError) {
+        props.setVideoError(errorMessage); // Передаем ошибку обратно в родительский компонент
+      }
     });
 
     // Очистка ресурса
