@@ -13,6 +13,8 @@ const Projects = () => {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
   const [activeTechTag, setActiveTechTag] = useState(null);
   const [videoError, setVideoError] = useState(null);
+  console.log("Video error state:", videoError);  // Добавить здесь для отладки
+
 
   const isSmall = useMediaQuery({ maxWidth: 639.5 });
   const isMobile = useMediaQuery({ maxWidth: 767 });

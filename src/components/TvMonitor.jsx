@@ -24,39 +24,39 @@ const TvMonitor = (props) => {
   );
 
   const videoTexture = useVideoTexture(props.texture)
+ // Видео элемент
+ useEffect(() => {
+  const video = document.createElement("video");
+  video.src = props.texture; // Указываем путь к видео
+  video.muted = true;
+  video.loop = true;
+  video.playbackRate = 1;
 
-  // Видео элемент
-  useEffect(() => {
-    const video = document.createElement("video");
-    video.src = props.texture; // Указываем путь к видео
-    video.muted = true;
-    video.loop = true;
-    video.play(); // Попробуем запустить видео сразу
-    video.playbackRate = 1;
+  // Пытаемся запустить видео
+  video.play().then(() => {
+    console.log("Video texture is playing");
+    setVideoErrorState(null); // Сбрасываем ошибку
+    if (props.setVideoError) {
+      props.setVideoError(null); // Передаем ошибку обратно в родительский компонент
+    }
+  }).catch((error) => {
+    console.error("Error playing video texture:", error);
+    const errorMessage = "Please disable low power mode on iOS to see the video";
+    setVideoErrorState(errorMessage); // Устанавливаем ошибку внутри компонента
+    if (props.setVideoError) {
+      props.setVideoError(errorMessage); // Передаем ошибку обратно в родительский компонент
+    }
 
-    video.addEventListener("play", () => {
-      console.log("Video texture is playing");
-      setVideoErrorState(null); // Сбрасываем ошибку
-      if (props.setVideoError) {
-        props.setVideoError(null); // Передаем ошибку обратно в родительский компонент
-      }
-    });
+    // Добавляем элементы управления для видео, если ошибка
+    video.setAttribute("controls", "controls");
+  });
 
-    video.addEventListener("error", (e) => {
-      console.error("Error playing video texture:", e);
-      const errorMessage = "Please disable low power mode on iOS to see the video";
-      setVideoErrorState(errorMessage); // Устанавливаем ошибку внутри компонента
-      if (props.setVideoError) {
-        props.setVideoError(errorMessage); // Передаем ошибку обратно в родительский компонент
-      }
-    });
-
-    // Очистка ресурса
-    return () => {
-      video.pause();
-      video.src = "";
-    };
-  }, [props.texture, props.setVideoError]);   
+  // Очистка ресурса
+  return () => {
+    video.pause();
+    video.src = "";
+  };
+}, [props.texture, props.setVideoError]);
 
   // useGSAP(() => {
   //   gsap.from(group.current.rotation, {
