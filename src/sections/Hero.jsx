@@ -64,7 +64,7 @@ const Hero = () => {
         </div>
 
         {/* Центр: 3D-сцена */}
-        <div className="relative border border-green-400 -top-6 2xl:w-full h-[60vh] max-2xl:w-[500px] max-[1000px]:w-[40%] max-lg:h-[55vh] max-md:h-[30vh]">
+        <div className="relative border border-green-400 -top-6 2xl:w-full h-[60vh] max-2xl:w-[500px] max-[1000px]:w-[45%] max-lg:h-[55vh] max-md:h-[30vh]">
           <Canvas className="w-full h-full">
             <Suspense fallback={<CanvasLoader />}>
               <PerspectiveCamera makeDefault position={[0, 0, 5]} />
