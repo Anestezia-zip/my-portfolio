@@ -193,7 +193,7 @@ const Projects = () => {
 
         {/* Project 3D model */}
         <div className="rounded-lg shadow-2xl shadow-black-500 border h-96 max-lg:h-80 lg:h-full">
-          <Canvas>
+        <Canvas gl={{ powerPreference: "high-performance", alpha: true }}>
             <ambientLight intensity={Math.PI} />
             <directionalLight position={[10, 10, 5]} />
             <Center>
