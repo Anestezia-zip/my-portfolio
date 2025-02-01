@@ -36,12 +36,15 @@ const TvMonitor = (props) => {
 
     video.addEventListener("play", () => {
       console.log("Video texture is playing");
-      setVideoError(null); // Сбрасываем ошибку
+      setVideoErrorState(null); // Сбрасываем ошибку
+      props.setVideoError(null);
     });
 
     video.addEventListener("error", (e) => {
       console.error("Error playing video texture:", e);
-      setVideoError("Please disable low power mode on iOS to see the video");
+      const errorMessage = "Please disable low power mode on iOS to see the video";
+      setVideoErrorState(errorMessage); // Устанавливаем ошибку внутри компонента
+      props.setVideoError(errorMessage);
     });
 
     // Очистка ресурса
@@ -49,7 +52,7 @@ const TvMonitor = (props) => {
       video.pause();
       video.src = "";
     };
-  }, [props.texture]);   
+  }, [props.texture, props.setVideoError]);   
 
   // useGSAP(() => {
   //   gsap.from(group.current.rotation, {
