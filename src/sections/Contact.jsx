@@ -1,17 +1,44 @@
 import React, { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
-    const formRef = useRef();
+  const formRef = useRef();
 
-    const [loading, setLoading] = useState(false)
-    const [form, setForm] = useState({
-        name: '',
-        email: '',
-        message: '',
-    })
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-    const handleChange = () => {}
-    const handleSubmit = () => {}
+  const handleChange = ({ target: { name, value } }) => {
+    setForm({ ...form, [name]: value });
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      emailjs.send(
+        "anastasiia",
+        "template_emailjs",
+        {
+          from_name: form.name,
+          to_name: "Anastasiia",
+          from_email: form.email,
+          to_email: "a.melni44enko@gmail.com",
+          message: form.message,
+        },
+        "wVGeZN02Ec9zamWMp"
+      );
+
+      setLoading(false);
+      setForm({ name: "", email: "", message: "" });
+    } catch (error) {
+      setLoading(false);
+      console.error(error);
+    }
+  };
 
   return (
     <section className="c-space my-20" id="contact">
@@ -39,17 +66,21 @@ const Contact = () => {
             digital solution? Let’s collaborate and bring your ideas to life.
           </p>
 
-          <form ref={formRef} onSubmit={handleSubmit} className="mt-12 flex flex-col space-y-7">
-          <label className="space-y-3">
+          <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="mt-12 flex flex-col space-y-7"
+          >
+            <label className="space-y-3">
               <span className="field-label">Full name</span>
               <input
                 type="text"
                 name="name"
-                // value={form.name}
+                value={form.name}
                 onChange={handleChange}
                 required
                 className="field-input"
-                placeholder="Full name"
+                placeholder="Your full name"
               />
             </label>
 
@@ -58,11 +89,11 @@ const Contact = () => {
               <input
                 type="email"
                 name="email"
-                // value={form.email}
+                value={form.email}
                 onChange={handleChange}
                 required
                 className="field-input"
-                placeholder="ex., a.melni44enko@gmail.com"
+                placeholder="Your email adsress"
               />
             </label>
 
@@ -70,19 +101,29 @@ const Contact = () => {
               <span className="field-label">Your message</span>
               <textarea
                 name="message"
-                // value={form.message}
+                value={form.message}
                 onChange={handleChange}
                 required
                 rows={5}
                 className="field-input"
-                placeholder="Share your thoughts or inquiries..."
+                placeholder="Hi, I'm interested in..."
               />
             </label>
 
-            <button className="field-btn" type="submit" disabled={loading}>
-              {loading ? 'Sending...' : 'Send Message'}
+            <button
+              className="flex items-center justify-center gap-2 p-2 rounded-md bg-gradient-to-b from-teal-900 via-gray-800 to-black"
+              type="submit"
+              disabled={loading}
+            >
+              <p className="text-white">
+                {loading ? "Sending..." : "Send message"}
+              </p>
 
-              <img src="/assets/arrow-up.png" alt="arrow-up" className="field-btn_arrow" />
+              <img
+                src="/assets/paper-plane.png"
+                alt="arrow-up"
+                className="w-3 h-3 mt-1 invert"
+              />
             </button>
           </form>
         </div>

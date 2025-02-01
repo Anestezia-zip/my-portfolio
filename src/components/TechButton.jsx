@@ -32,11 +32,11 @@ const TechButton = ({ src, text, color = '', index, activeIndex, setActiveIndex,
   return (
     <div 
       ref={buttonRef} // Привязываем ссылку к элементу
-      className={`tech-logo flex items-center gap-2 ${color} ${activeIndex === index ? "border active:scale-105" : "z-0"}`} // Добавляем z-20 для активного элемента
+      className={`tech-logo cursor-pointer flex items-center gap-2 ${color} ${activeIndex === index ? "active:scale-105" : "z-0"}`} // Добавляем z-20 для активного элемента
       onClick={handleClick} // Обработчик клика по кнопке
     >
       {/* Icon */}
-      <img className={`w-[45px] max-sm:w-[30px] max-md:w-[40px] 2xl:w-[100px] ${activeIndex === index && "scale-150"}`} src={src} alt="Tech icon" />
+      <img className={`w-[45px] max-sm:w-[30px] max-md:w-[40px] ${activeIndex === index && "scale-125"}`} src={src} alt="Tech icon" />
 
       {/* Text */}
       {activeIndex === index && (

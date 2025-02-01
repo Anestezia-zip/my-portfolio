@@ -16,8 +16,8 @@ const Projects = () => {
 
   const isSmall = useMediaQuery({ maxWidth: 639.5 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
-  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
-  const isLaptop = useMediaQuery({ minWidth: 1025, maxWidth: 1280 });
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
+  const isLaptop = useMediaQuery({ minWidth: 1024, maxWidth: 1280 });
   const sizes = calculateSizes(isSmall, isMobile, isTablet, isLaptop);
 
   const currentCategory = projectsByTech[selectedCategoryIndex];

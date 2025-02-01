@@ -134,14 +134,6 @@ body {
     @apply w-full px-5 py-2 min-h-14 rounded-lg placeholder:text-white-500 text-lg shadow-2xl focus:outline-none;
   }
 
-  .field-btn {
-    @apply bg-black-500 px-5 py-2 min-h-12 rounded-lg shadow-xl flex justify-center items-center text-lg text-white gap-3;
-  }
-
-  .field-btn_arrow {
-    @apply w-2.5 h-2.5 object-contain invert brightness-0;
-  }
-
   /*  footer */
   .social-icon {
     @apply w-12 h-12 rounded-full flex justify-center items-center bg-black-300 border border-black-200;

@@ -16,11 +16,13 @@ const Hero = () => {
   const isSmall = useMediaQuery({ maxWidth: 639.5 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1024 });
+  const isTabletHeight = useMediaQuery({ minHeight: 1024 });
+  const heroHeight = isTabletHeight ? "h-[75vh]" : "min-h-screen";
 
   const sizes = calculateSizes(isSmall, isMobile, isTablet);
 
   return (
-    <section className="min-h-screen w-full flex flex-col relative" id="home">
+    <section className={`${heroHeight} w-full flex flex-col relative`} id="home">
       <div className="w-fit mx-auto flex flex-col sm:mt-28 mt-20 c-space gap-2">
         <h1 className="sm:text-3xl max-sm:mt-4 text-xl font-medium text-black text-center font-generalsans">
           Hi there, welcome to my portfolio!
@@ -141,7 +143,7 @@ const Hero = () => {
       </div>
 
       <div className="absolute xl:bottom-8 2xl:bottom-20 max-xl:bottom-0 max-sm:-bottom-2 max-[376px]:-bottom-4 left-0 right-0 w-fit mx-auto z-10 c-space">
-        <a href="#about" className="w-fit">
+        <a href="#contact" className="w-fit">
           <Button
             name="Let's work together"
             isBeam
