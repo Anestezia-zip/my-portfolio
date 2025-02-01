@@ -206,7 +206,7 @@ const Projects = () => {
                 >
                   <TvMonitor
                     texture={currentProject.texture}
-                    onError={setVideoError}
+                    setVideoError={setVideoError}
                   />
                 </group>
               </Suspense>
