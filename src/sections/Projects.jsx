@@ -12,6 +12,7 @@ const Projects = () => {
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
   const [activeTechTag, setActiveTechTag] = useState(null);
+  const [videoError, setVideoError] = useState(null);
 
   const isSmall = useMediaQuery({ maxWidth: 639.5 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -124,15 +125,15 @@ const Projects = () => {
           <div className="flex items-center justify-between flex-wrap gap-5">
             <div className="flex items-center gap-3">
               {currentProject.tags.map((tag, index) => (
-                  <TechButton
-                    key={index}
-                    src={tag.path}
-                    text={tag.name}
-                    index={index}
-                    activeIndex={activeTechTag}
-                    setActiveIndex={setActiveTechTag}
-                    positionClass='-top-8 left-0'
-                  />
+                <TechButton
+                  key={index}
+                  src={tag.path}
+                  text={tag.name}
+                  index={index}
+                  activeIndex={activeTechTag}
+                  setActiveIndex={setActiveTechTag}
+                  positionClass="-top-8 left-0"
+                />
               ))}
             </div>
 
@@ -193,7 +194,7 @@ const Projects = () => {
 
         {/* Project 3D model */}
         <div className="rounded-lg shadow-2xl shadow-black-500 border h-96 max-lg:h-80 lg:h-full">
-        <Canvas gl={{ powerPreference: "high-performance", alpha: true }}>
+          <Canvas>
             <ambientLight intensity={Math.PI} />
             <directionalLight position={[10, 10, 5]} />
             <Center>
@@ -203,7 +204,15 @@ const Projects = () => {
                   position={sizes.tvPosition}
                   rotation={[0, 0, 0]}
                 >
-                  <TvMonitor texture={currentProject.texture} />
+                  <TvMonitor
+                    texture={currentProject.texture}
+                    onError={setVideoError}
+                  />
+                  {videoError && (
+                    <div style={{ color: "red", marginTop: "20px" }}>
+                      {videoError}
+                    </div>
+                  )}
                 </group>
               </Suspense>
             </Center>

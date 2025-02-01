@@ -6,13 +6,14 @@ Source: https://sketchfab.com/3d-models/game-ready-uhd-curved-tv-dbd3002920dd4ac
 Title: Game Ready UHD Curved TV
 */
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useGLTF, useVideoTexture } from "@react-three/drei";
 import { useGSAP } from "@gsap/react";
-import gsap from 'gsap';
-
+import gsap from "gsap";
 
 const TvMonitor = (props) => {
+  const [videoError, setVideoError] = useState(null);
+
   const group = useRef();
   const { nodes, materials } = useGLTF(
     "/models/tv/tv__glass_table_sketchfab.glb"
@@ -20,20 +21,41 @@ const TvMonitor = (props) => {
 
   const txt = useVideoTexture(props.texture, {
     muted: true, // Отключаем звук
-    loop: true,  // Зацикливаем
+    loop: true, // Зацикливаем
     autoPlay: true, // Включаем автозапуск
     playsInline: true, // Для iPhone
     crossOrigin: "anonymous", // Исправляет проблемы с кэшированием
-  });    
+  });
+
+  useEffect(() => {
+    const handlePlay = () => {
+      console.log("Video texture is playing");
+      setVideoError(null); // Сбрасываем ошибку, если видео начинает воспроизводиться
+    };
+
+    const handleError = (e) => {
+      console.error("Error playing video texture:", e);
+      setVideoError("Please disable low power mode on iOS to see the video");
+    };
+
+    // Добавляем события play и error
+    txt.addEventListener("play", handlePlay, false);
+    txt.addEventListener("error", handleError, false);
+
+    // Убираем обработчики событий при размонтировании компонента
+    return () => {
+      txt.removeEventListener("play", handlePlay, false);
+      txt.removeEventListener("error", handleError, false);
+    };
+  }, [txt]);
 
   useGSAP(() => {
     gsap.from(group.current.rotation, {
       y: -Math.PI / 4,
       duration: 1,
-      ease: 'power3.out'
-    })
-  }, [txt])
-
+      ease: "power3.out",
+    });
+  }, [txt]);
 
   return (
     <group ref={group} {...props} dispose={null}>
@@ -159,7 +181,16 @@ const TvMonitor = (props) => {
                   geometry={nodes.Object_21.geometry}
                   material={materials.TV_Screen}
                 >
-                  <meshBasicMaterial map={txt}/>
+                  <meshBasicMaterial map={txt} />
+                  {videoError && (
+                    <group position={[0, 0, 1]}>
+                      <text
+                        color="red"
+                        fontSize={0.5}
+                        children={videoError} // Показываем ошибку, если видео не воспроизводится
+                      />
+                    </group>
+                  )}
                 </mesh>
                 <mesh
                   name="Object_22"
