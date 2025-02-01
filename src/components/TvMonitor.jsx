@@ -6,66 +6,26 @@ Source: https://sketchfab.com/3d-models/game-ready-uhd-curved-tv-dbd3002920dd4ac
 Title: Game Ready UHD Curved TV
 */
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useGLTF, useVideoTexture } from "@react-three/drei";
-import { Text } from "@react-three/drei";
 import { useGSAP } from "@gsap/react";
 import gsap from 'gsap';
-import * as THREE from "three"; // Импортируем THREE
-
-
 
 const TvMonitor = (props) => {
-  const [videoError, setVideoErrorState] = useState(null);
-
   const group = useRef();
   const { nodes, materials } = useGLTF(
     "/models/tv/tv__glass_table_sketchfab.glb"
   );
-
   
-  const videoTexture = useVideoTexture(props.texture)
- // Видео элемент
-  useEffect(() => {
-    const video = document.createElement("video");
-    video.src = props.texture; // Указываем путь к видео
-    video.muted = true;
-    video.loop = true;
-    video.playbackRate = 1;
+  const txt = useVideoTexture(props.texture ? props.texture : '/textures/project/project1.mp4');
 
-    // Пытаемся запустить видео
-    video.play().then(() => {
-      console.log("Video texture is playing");
-      setVideoErrorState(null); // Сбрасываем ошибку
-      if (props.setVideoError) {
-        props.setVideoError(null); // Передаем ошибку обратно в родительский компонент
-      }
-    }).catch((error) => {
-      console.error("Error playing video texture:", error);
-      const errorMessage = "Please disable low power mode on iOS to see the video";
-      setVideoErrorState(errorMessage); // Устанавливаем ошибку внутри компонента
-      if (props.setVideoError) {
-        props.setVideoError(errorMessage); // Передаем ошибку обратно в родительский компонент
-      }
-
-      // Добавляем элементы управления для видео, если ошибка
-      video.setAttribute("controls", "controls");
-    });
-
-    // Очистка ресурса
-    return () => {
-      video.pause();
-      video.src = "";
-    };
-  }, [props.texture, props.setVideoError]);
-
-  // useGSAP(() => {
-  //   gsap.from(group.current.rotation, {
-  //     y: -Math.PI / 4,
-  //     duration: 1,
-  //     ease: 'power3.out'
-  //   })
-  // }, [txt])
+  useGSAP(() => {
+    gsap.from(group.current.rotation, {
+      y: -Math.PI / 4,
+      duration: 1,
+      ease: 'power3.out'
+    })
+  }, [txt])
 
 
   return (
@@ -192,8 +152,7 @@ const TvMonitor = (props) => {
                   geometry={nodes.Object_21.geometry}
                   material={materials.TV_Screen}
                 >
-                  {videoTexture && <meshBasicMaterial map={videoTexture} />}
-                  {/* <meshBasicMaterial map={txt}/> */}
+                  {txt && <meshBasicMaterial map={txt} />}
                 </mesh>
                 <mesh
                   name="Object_22"
@@ -421,11 +380,6 @@ const TvMonitor = (props) => {
           </group>
         </group>
       </group>
-      {videoError && (
-        <Text color="red" fontSize={0.1} maxWidth={1} scale={1} position={[0.3, 0.25, 0.4]}>
-        {videoError}
-      </Text>
-      )}
     </group>
   );
 };

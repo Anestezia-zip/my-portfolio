@@ -12,12 +12,7 @@ const Projects = () => {
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [selectedProjectIndex, setSelectedProjectIndex] = useState(0);
   const [activeTechTag, setActiveTechTag] = useState(null);
-  const [videoError, setVideoError] = useState(null);
-  console.log("Video error state:", videoError);  // Добавить здесь для отладки
-  // Сбрасываем состояние ошибки при перезагрузке страницы
-  useEffect(() => {
-    setVideoError(null);
-  }, []);
+  const [isTooltipVisible, setIsTooltipVisible] = useState(false);
 
   const isSmall = useMediaQuery({ maxWidth: 639.5 });
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -209,10 +204,7 @@ const Projects = () => {
                   position={sizes.tvPosition}
                   rotation={[0, 0, 0]}
                 >
-                  <TvMonitor
-                    texture={currentProject.texture}
-                    setVideoError={setVideoError}
-                  />
+                  <TvMonitor texture={currentProject.texture} />
                 </group>
               </Suspense>
             </Center>
@@ -220,9 +212,18 @@ const Projects = () => {
           </Canvas>
         </div>
 
-        {videoError && (
-          <div style={{ color: "red", marginTop: "20px" }}>{videoError}</div>
-        )}
+        <div
+          className="flex items-center max-sm:text-sm lg:hidden"
+          onClick={() => setIsTooltipVisible(!isTooltipVisible)}
+        >
+          <p className="px-2 py-0.5">Don't see the video?</p>
+          <img className="w-5 h-5" src="/assets/info.png" alt="Info icon" />
+          {isTooltipVisible && (
+            <div className="ml-2 text-green-400 bg-black-500 rounded px-2 py-0.5">
+              Try turning off the power-saving mode
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
