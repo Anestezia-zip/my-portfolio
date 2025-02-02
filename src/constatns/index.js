@@ -16,6 +16,11 @@ export const navLinks = [
     },
     {
       id: 4,
+      name: 'Education',
+      href: '#education',
+    },
+    {
+      id: 5,
       name: 'Contact',
       href: '#contact',
     },
@@ -320,3 +325,30 @@ export const navLinks = [
     },
   ];
   
+
+  export const education = [
+    {
+      title: 'Diploma in Full-stack Software Development (E-commerce applications) UWS level 8',
+      year: 2024,
+      place: 'Kerry College, Ireland',
+      icon: '/assets/award.png',
+      animation: 'clapping',
+      modules: 'HTML5, CSS3, JavaScript, Python, Agile, Design Thinking, Bootstrap, jQuery, APIs, Flask, PostgreSQL, Django, E-commerce, SEO, Web marketing, Software testing'
+    },
+    {
+      title: 'Completion of a 220 academic hours advanced Frontend Development program',
+      year: 2023,
+      place: 'Logos IT Academy, Ukraine',
+      icon: '/assets/certificate.png',
+      animation: 'salute',
+      modules: 'HTML5, CSS3, JavaScript, React, Typescript, OOP, jQuery, Git, AJAX, JSON, APIs, Angular, Gulp, Webpack and data storage techniques'
+    },
+    {
+      title: 'Ordinary Bachelor Degree in “Civil Engineering and Navigation”',
+      year: 2022,
+      place: 'Maritime University of Szczecin, Poland',
+      icon: '/assets/bachelor.png',
+      animation: 'victory',
+      modules: 'Higher mathematics, physics, chemistry, numerical methods, IT, sociology, intellectual property, electrical engineering, electronics, navigation, marine communication, cargo handling, maritime law, safety, maneuvering, piloting, and safety management in navigation.'
+    }
+  ]

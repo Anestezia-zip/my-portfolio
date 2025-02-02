@@ -72,7 +72,7 @@ const Projects = () => {
         </select>
         <h4 className="lg:text-lg">
           <span className="font-bold mr-2 tracking-wide">
-            Number of projects:
+            Number of projects in category:
           </span>
           {projectCount}
         </h4>

@@ -59,7 +59,7 @@ const Contact = () => {
             </span>
           </div>
         </div>
-        <div className="contact-container bg-white/50 p-6 pb-8">
+        <div className="contact-container bg-white/40 p-6 pb-8 my-4">
           <h3 className="font-bold text-2x">Get in Touch</h3>
           <p className="text-base mt-4">
             Need a fresh website, a revamp of your current one, or a custom
@@ -71,9 +71,10 @@ const Contact = () => {
             onSubmit={handleSubmit}
             className="mt-12 flex flex-col space-y-7"
           >
-            <label className="space-y-3">
+            <label className="space-y-3" htmlFor="name">
               <span className="field-label">Full name</span>
               <input
+                id="name"
                 type="text"
                 name="name"
                 value={form.name}
@@ -84,22 +85,24 @@ const Contact = () => {
               />
             </label>
 
-            <label className="space-y-3">
+            <label className="space-y-3" htmlFor="email">
               <span className="field-label">Email address</span>
               <input
+                id="email"
                 type="email"
                 name="email"
                 value={form.email}
                 onChange={handleChange}
                 required
                 className="field-input"
-                placeholder="Your email adsress"
+                placeholder="Your email address"
               />
             </label>
 
-            <label className="space-y-3">
+            <label className="space-y-3" htmlFor="message">
               <span className="field-label">Your message</span>
               <textarea
+                id="message"
                 name="message"
                 value={form.message}
                 onChange={handleChange}
@@ -114,10 +117,11 @@ const Contact = () => {
               className="flex items-center justify-center gap-2 p-2 rounded-md bg-gradient-to-b from-teal-900 via-gray-800 to-black"
               type="submit"
               disabled={loading}
+              aria-live="polite"
             >
-              <p className="text-white sm:text-xl">
+              <span className="text-white sm:text-xl">
                 {loading ? "Sending..." : "Send message"}
-              </p>
+              </span>
 
               <img
                 src="/assets/paper-plane.png"

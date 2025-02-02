@@ -106,19 +106,28 @@ body {
   }
 
   .work-canvas {
-    @apply col-span-1 rounded-lg bg-black-200 border border-black-300;
+    @apply col-span-1 max-lg:min-h-96 rounded-lg border-2 border-white/60 shadow-[inset_2px_2px_20px_rgba(255,255,255,0.6)];
   }
 
   .work-content {
-    @apply col-span-2 rounded-lg bg-black-200 border border-black-300;
+    @apply col-span-2 rounded-lg bg-white/50 border relative;
+  }
+
+  .work-content_after {
+    @apply after:content-[''] after:absolute after:top-1/2 after:left-[6.6px]
+      after:w-2 after:h-2 
+      after:border-l-[12px] after:border-l-transparent 
+      after:border-r-[12px] after:border-r-transparent 
+      after:border-b-[18px] after:border-b-white/50
+      after:rotate-[34deg] after:-translate-x-[101%]  after:-translate-y-full
   }
 
   .work-content_container {
-    @apply grid grid-cols-[auto_1fr] items-start gap-5  transition-all ease-in-out duration-500 cursor-pointer hover:bg-black-300 rounded-lg sm:px-5 px-2.5;
+    @apply grid grid-cols-[auto_1fr] items-start gap-5 transition-all ease-in-out duration-500 cursor-pointer hover:bg-teal-200/50 rounded-lg sm:px-5 px-2.5;
   }
 
   .work-content_logo {
-    @apply rounded-3xl w-16 h-16 p-2 bg-black-600;
+    @apply rounded-3xl w-20 h-20 p-2;
   }
 
   .work-content_bar {
