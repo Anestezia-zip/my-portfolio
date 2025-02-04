@@ -11,6 +11,7 @@ const Education = () => {
   return (
 
     <section className="c-space" id="education">
+      <h3 className="sr-only">My journey in education</h3>
       <div className="w-full ">
         <div className="work-container">
           <div className="work-canvas">

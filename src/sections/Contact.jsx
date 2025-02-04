@@ -3,23 +3,24 @@ import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const formRef = useRef();
-
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = ({ target: { name, value } }) => {
     setForm({ ...form, [name]: value });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      emailjs.send(
+      await emailjs.send(
         "anastasiia",
         "template_emailjs",
         {
@@ -33,11 +34,16 @@ const Contact = () => {
       );
 
       setLoading(false);
-      setForm({ name: "", email: "", message: "" });
+      setSubmitted(true);
     } catch (error) {
       setLoading(false);
       console.error(error);
     }
+  };
+
+  const handleReset = () => {
+    setForm({ name: "", email: "", message: "" });
+    setSubmitted(false);
   };
 
   return (
@@ -60,76 +66,93 @@ const Contact = () => {
           </div>
         </div>
         <div className="contact-container bg-white/40 p-6 pb-8 my-4">
-          <h3 className="font-bold text-2x">Get in Touch</h3>
-          <p className="text-base mt-4">
-            Need a fresh website, a revamp of your current one, or a custom
-            digital solution? Let’s collaborate and bring your ideas to life.
-          </p>
+          {submitted ? (
+            <div className="text-center">
+              <h3 className="font-bold text-2xl">Thank you!</h3>
+              <p className="text-base mt-4">
+                I usually respond the same day 😉
+              </p>
+              <button
+                className="mt-6 p-2 rounded-md bg-gradient-to-b from-teal-900 via-gray-800 to-black text-white sm:text-xl"
+                onClick={handleReset}
+              >
+                Back to form
+              </button>
+            </div>
+          ) : (
+            <>
+              <h3 className="font-bold text-2x">Get in Touch</h3>
+              <p className="text-base mt-4">
+                Need a fresh website, a revamp of your current one, or a custom
+                digital solution? Let’s collaborate and bring your ideas to
+                life.
+              </p>
+              <form
+                ref={formRef}
+                onSubmit={handleSubmit}
+                className="mt-12 flex flex-col space-y-7"
+              >
+                <label className="space-y-3" htmlFor="name">
+                  <span className="field-label">Full name</span>
+                  <input
+                    id="name"
+                    type="text"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    required
+                    className="field-input"
+                    placeholder="Your full name"
+                  />
+                </label>
 
-          <form
-            ref={formRef}
-            onSubmit={handleSubmit}
-            className="mt-12 flex flex-col space-y-7"
-          >
-            <label className="space-y-3" htmlFor="name">
-              <span className="field-label">Full name</span>
-              <input
-                id="name"
-                type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                required
-                className="field-input"
-                placeholder="Your full name"
-              />
-            </label>
+                <label className="space-y-3" htmlFor="email">
+                  <span className="field-label">Email address</span>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    required
+                    className="field-input"
+                    placeholder="Your email address"
+                  />
+                </label>
 
-            <label className="space-y-3" htmlFor="email">
-              <span className="field-label">Email address</span>
-              <input
-                id="email"
-                type="email"
-                name="email"
-                value={form.email}
-                onChange={handleChange}
-                required
-                className="field-input"
-                placeholder="Your email address"
-              />
-            </label>
+                <label className="space-y-3" htmlFor="message">
+                  <span className="field-label">Your message</span>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={form.message}
+                    onChange={handleChange}
+                    required
+                    rows={5}
+                    className="field-input"
+                    placeholder="Hi, I'm interested in..."
+                  />
+                </label>
 
-            <label className="space-y-3" htmlFor="message">
-              <span className="field-label">Your message</span>
-              <textarea
-                id="message"
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                required
-                rows={5}
-                className="field-input"
-                placeholder="Hi, I'm interested in..."
-              />
-            </label>
+                <button
+                  className="flex items-center justify-center gap-2 p-2 rounded-md bg-gradient-to-b from-teal-900 via-gray-800 to-black"
+                  type="submit"
+                  disabled={loading}
+                  aria-live="polite"
+                >
+                  <span className="text-white sm:text-xl">
+                    {loading ? "Sending..." : "Send message"}
+                  </span>
 
-            <button
-              className="flex items-center justify-center gap-2 p-2 rounded-md bg-gradient-to-b from-teal-900 via-gray-800 to-black"
-              type="submit"
-              disabled={loading}
-              aria-live="polite"
-            >
-              <span className="text-white sm:text-xl">
-                {loading ? "Sending..." : "Send message"}
-              </span>
-
-              <img
-                src="/assets/paper-plane.png"
-                alt="arrow-up"
-                className="w-3 h-3 mt-1 invert"
-              />
-            </button>
-          </form>
+                  <img
+                    src="/assets/paper-plane.png"
+                    alt="arrow-up"
+                    className="w-3 h-3 mt-1 invert"
+                  />
+                </button>
+              </form>
+            </>
+          )}
         </div>
       </div>
     </section>

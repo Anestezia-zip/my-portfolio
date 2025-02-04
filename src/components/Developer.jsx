@@ -12,111 +12,126 @@ const Developer = ({ animationName = "idle", ...props }) => {
   );
 
   const { animations: idleAnimation } = useFBX("/models/animations/idle.fbx");
-  const { animations: saluteAnimation } = useFBX("/models/animations/salute.fbx");
-  const { animations: clappingAnimation } = useFBX("/models/animations/clapping.fbx");
-  const { animations: victoryAnimation } = useFBX("/models/animations/victory.fbx");
-  
+  const { animations: saluteAnimation } = useFBX(
+    "/models/animations/salute.fbx"
+  );
+  const { animations: clappingAnimation } = useFBX(
+    "/models/animations/clapping.fbx"
+  );
+  const { animations: victoryAnimation } = useFBX(
+    "/models/animations/victory.fbx"
+  );
+
   idleAnimation[0].name = "idle";
   saluteAnimation[0].name = "salute";
   clappingAnimation[0].name = "clapping";
   victoryAnimation[0].name = "victory";
 
   const { actions } = useAnimations(
-    [idleAnimation[0], saluteAnimation[0], clappingAnimation[0], victoryAnimation[0]],
-    group,
+    [
+      idleAnimation[0],
+      saluteAnimation[0],
+      clappingAnimation[0],
+      victoryAnimation[0],
+    ],
+    group
   );
 
   useEffect(() => {
-    actions[animationName]?.reset().play();
-    if (animationName === 'idle') {
-        group.current.rotation.set(2, Math.PI, 3.1);
-    } else {
-        group.current.rotation.set(3.5, 3.15, 3.15)
+    if (actions[animationName]) {
+      actions[animationName].reset().play();
     }
-  
+
+    if (group.current) {
+      if (animationName === "idle") {
+        group.current.rotation.set(2, Math.PI, 3.1);
+      } else {
+        group.current.rotation.set(3.5, 3.15, 3.15);
+      }
+    }
+
     return () => {
       actions[animationName];
     };
-  }, [animationName]);
-  
+  }, [animationName, actions]);
 
   return (
     <group ref={group} {...props} dispose={null}>
-     <group>
-     <primitive object={nodes.Hips} />
-      <skinnedMesh
-        name="EyeLeft"
-        geometry={nodes.EyeLeft.geometry}
-        material={materials.Wolf3D_Eye}
-        skeleton={nodes.EyeLeft.skeleton}
-        morphTargetDictionary={nodes.EyeLeft.morphTargetDictionary}
-        morphTargetInfluences={nodes.EyeLeft.morphTargetInfluences}
-        frustumCulled={false}
-      />
-      <skinnedMesh
-        name="EyeRight"
-        geometry={nodes.EyeRight.geometry}
-        material={materials.Wolf3D_Eye}
-        skeleton={nodes.EyeRight.skeleton}
-        morphTargetDictionary={nodes.EyeRight.morphTargetDictionary}
-        morphTargetInfluences={nodes.EyeRight.morphTargetInfluences}
-        frustumCulled={false}
-      />
-      <skinnedMesh
-        name="Wolf3D_Head"
-        geometry={nodes.Wolf3D_Head.geometry}
-        material={materials.Wolf3D_Skin}
-        skeleton={nodes.Wolf3D_Head.skeleton}
-        morphTargetDictionary={nodes.Wolf3D_Head.morphTargetDictionary}
-        morphTargetInfluences={nodes.Wolf3D_Head.morphTargetInfluences}
-        frustumCulled={false}
-      />
-      <skinnedMesh
-        name="Wolf3D_Teeth"
-        geometry={nodes.Wolf3D_Teeth.geometry}
-        material={materials.Wolf3D_Teeth}
-        skeleton={nodes.Wolf3D_Teeth.skeleton}
-        morphTargetDictionary={nodes.Wolf3D_Teeth.morphTargetDictionary}
-        morphTargetInfluences={nodes.Wolf3D_Teeth.morphTargetInfluences}
-        frustumCulled={false}
-      />
-      <skinnedMesh
-        geometry={nodes.Wolf3D_Hair.geometry}
-        material={materials.Wolf3D_Hair}
-        skeleton={nodes.Wolf3D_Hair.skeleton}
-        frustumCulled={false}
-      />
-      <skinnedMesh
-        geometry={nodes.Wolf3D_Glasses.geometry}
-        material={materials.Wolf3D_Glasses}
-        skeleton={nodes.Wolf3D_Glasses.skeleton}
-        frustumCulled={false}
-      />
-      <skinnedMesh
-        geometry={nodes.Wolf3D_Body.geometry}
-        material={materials.Wolf3D_Body}
-        skeleton={nodes.Wolf3D_Body.skeleton}
-        frustumCulled={false}
-      />
-      <skinnedMesh
-        geometry={nodes.Wolf3D_Outfit_Bottom.geometry}
-        material={materials.Wolf3D_Outfit_Bottom}
-        skeleton={nodes.Wolf3D_Outfit_Bottom.skeleton}
-        frustumCulled={false}
-      />
-      <skinnedMesh
-        geometry={nodes.Wolf3D_Outfit_Footwear.geometry}
-        material={materials.Wolf3D_Outfit_Footwear}
-        skeleton={nodes.Wolf3D_Outfit_Footwear.skeleton}
-        frustumCulled={false}
-      />
-      <skinnedMesh
-        geometry={nodes.Wolf3D_Outfit_Top.geometry}
-        material={materials.Wolf3D_Outfit_Top}
-        skeleton={nodes.Wolf3D_Outfit_Top.skeleton}
-        frustumCulled={false}
-      />
-     </group>
+      <group>
+        <primitive object={nodes.Hips} />
+        <skinnedMesh
+          name="EyeLeft"
+          geometry={nodes.EyeLeft.geometry}
+          material={materials.Wolf3D_Eye}
+          skeleton={nodes.EyeLeft.skeleton}
+          morphTargetDictionary={nodes.EyeLeft.morphTargetDictionary}
+          morphTargetInfluences={nodes.EyeLeft.morphTargetInfluences}
+          frustumCulled={false}
+        />
+        <skinnedMesh
+          name="EyeRight"
+          geometry={nodes.EyeRight.geometry}
+          material={materials.Wolf3D_Eye}
+          skeleton={nodes.EyeRight.skeleton}
+          morphTargetDictionary={nodes.EyeRight.morphTargetDictionary}
+          morphTargetInfluences={nodes.EyeRight.morphTargetInfluences}
+          frustumCulled={false}
+        />
+        <skinnedMesh
+          name="Wolf3D_Head"
+          geometry={nodes.Wolf3D_Head.geometry}
+          material={materials.Wolf3D_Skin}
+          skeleton={nodes.Wolf3D_Head.skeleton}
+          morphTargetDictionary={nodes.Wolf3D_Head.morphTargetDictionary}
+          morphTargetInfluences={nodes.Wolf3D_Head.morphTargetInfluences}
+          frustumCulled={false}
+        />
+        <skinnedMesh
+          name="Wolf3D_Teeth"
+          geometry={nodes.Wolf3D_Teeth.geometry}
+          material={materials.Wolf3D_Teeth}
+          skeleton={nodes.Wolf3D_Teeth.skeleton}
+          morphTargetDictionary={nodes.Wolf3D_Teeth.morphTargetDictionary}
+          morphTargetInfluences={nodes.Wolf3D_Teeth.morphTargetInfluences}
+          frustumCulled={false}
+        />
+        <skinnedMesh
+          geometry={nodes.Wolf3D_Hair.geometry}
+          material={materials.Wolf3D_Hair}
+          skeleton={nodes.Wolf3D_Hair.skeleton}
+          frustumCulled={false}
+        />
+        <skinnedMesh
+          geometry={nodes.Wolf3D_Glasses.geometry}
+          material={materials.Wolf3D_Glasses}
+          skeleton={nodes.Wolf3D_Glasses.skeleton}
+          frustumCulled={false}
+        />
+        <skinnedMesh
+          geometry={nodes.Wolf3D_Body.geometry}
+          material={materials.Wolf3D_Body}
+          skeleton={nodes.Wolf3D_Body.skeleton}
+          frustumCulled={false}
+        />
+        <skinnedMesh
+          geometry={nodes.Wolf3D_Outfit_Bottom.geometry}
+          material={materials.Wolf3D_Outfit_Bottom}
+          skeleton={nodes.Wolf3D_Outfit_Bottom.skeleton}
+          frustumCulled={false}
+        />
+        <skinnedMesh
+          geometry={nodes.Wolf3D_Outfit_Footwear.geometry}
+          material={materials.Wolf3D_Outfit_Footwear}
+          skeleton={nodes.Wolf3D_Outfit_Footwear.skeleton}
+          frustumCulled={false}
+        />
+        <skinnedMesh
+          geometry={nodes.Wolf3D_Outfit_Top.geometry}
+          material={materials.Wolf3D_Outfit_Top}
+          skeleton={nodes.Wolf3D_Outfit_Top.skeleton}
+          frustumCulled={false}
+        />
+      </group>
     </group>
   );
 };

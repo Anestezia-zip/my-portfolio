@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 
 const GlobeComponent = () => {
   const globeRef = useRef();
-  const isMobile = useMediaQuery({ maxWidth: 768 });
+  const isMobile = useMediaQuery({ maxWidth: 1024 });
   
   useEffect(() => {
     if (globeRef.current) {
@@ -12,19 +12,19 @@ const GlobeComponent = () => {
       const controls = globe.controls();
 
       if (isMobile) {
-        controls.enableZoom = false; // Отключаем зум на мобильных
+        controls.enableZoom = false; // Disable zoom on mobiles
       }
 
       controls.enableRotate = true;
       controls.enablePan = true;
     }
-  }, [isMobile]); // Перезапускаем эффект при изменении isMobile
+  }, [isMobile]);
 
   return (
     <Globe
       ref={globeRef}
-      height={isMobile ? 200 : 326} // Уменьшаем размер на мобилках
-      width={isMobile ? 200 : 326}
+      height={isMobile ? 220 : 326}
+      width={isMobile ? 220 : 326}
       backgroundColor="rgba(0, 0, 0, 0)"
       backgroundImageOpacity={0.5}
       showAtmosphere

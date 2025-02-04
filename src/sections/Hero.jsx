@@ -30,7 +30,7 @@ const Hero = () => {
         </h2>
       </div>
 
-      <div className="flex max-md:flex-col items-center justify-center max-lg:gap-4 gap-12 px-4">
+      <div className="flex max-md:flex-col items-center justify-center max-lg:gap-4 max-[830px]:gap-1 gap-12 px-4">
         {/* Left item list */}
         <div className="hidden relative top-10 md:flex justify-center gap-6 items-end w-fit">
           <div className="relative -top-10 flex flex-col gap-6">
@@ -71,7 +71,7 @@ const Hero = () => {
 
         {/* Centre: 3D-сцена */}
         <div
-          className="relative-top-6 w-full h-[240px] md:w-[320px] md:h-[320px] lg:w-[350px] 2xl:w-[700px] 2xl:h-[550px]"
+          className="relative -top-6 w-full h-[240px] md:w-[320px] md:h-[320px] lg:w-[350px] 2xl:w-[700px] 2xl:h-[550px]"
           aria-hidden="true"
           role="presentation"
         >
@@ -130,34 +130,39 @@ const Hero = () => {
 
         {/* Mobile tech item list */}
         <div className="relative -top-10 max-[360px]:-top-14 md:hidden flex items-center justify-center w-fit">
-          <div className="grid grid-cols-5 gap-5 p-4">
-            {items.slice(0, 20).map((item, i) => (
-              <div
-                key={i}
-                className={
-                  i % 2 === 0
-                    ? "animate-float-down-left"
-                    : "animate-float-down-right"
-                }
-              >
-                <TechButton
-                  text={item.text}
-                  src={item.src}
-                  index={i}
-                  activeIndex={activeIndex}
-                  setActiveIndex={setActiveIndex}
-                  positionClass="-top-7 left-1/2 transform -translate-x-1/2"
-                  color="w-16 h-16"
-                  tabIndex="0"
-                  aria-label={`Technical icon: ${item.text}`}
-                />
-              </div>
-            ))}
+          <div>
+            <h3 className="font-generalsans text-lg my-3">
+              My technical arsenal:
+            </h3>
+            <div className="grid grid-cols-5 gap-x-3 gap-y-6 p-4">
+              {items.slice(0, 20).map((item, i) => (
+                <div
+                  key={i}
+                  className={
+                    i % 2 === 0
+                      ? "animate-float-down-left"
+                      : "animate-float-down-right"
+                  }
+                >
+                  <TechButton
+                    text={item.text}
+                    src={item.src}
+                    index={i}
+                    activeIndex={activeIndex}
+                    setActiveIndex={setActiveIndex}
+                    positionClass="-top-7 left-1/2 transform -translate-x-1/2"
+                    color="w-15 h-15"
+                    tabIndex="0"
+                    aria-label={`Technical icon: ${item.text}`}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="relative max-2xl:top-14 max-md:top-0 left-0 right-0 w-fit mx-auto z-10 c-space mt-2">
+      <div className="relative max-2xl:top-14 max-md:-top-4 left-0 right-0 w-fit mx-auto z-10 c-space mt-2">
         <a href="#contact" className="w-fit">
           <Button
             name="Let's work together"
