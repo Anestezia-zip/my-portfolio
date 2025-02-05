@@ -145,14 +145,14 @@ const Hero = () => {
                   }
                 >
                   <TechButton
-                    text={item.text}
                     src={item.src}
+                    text={item.text}
                     index={i}
                     activeIndex={activeIndex}
                     setActiveIndex={setActiveIndex}
-                    positionClass="-top-7 left-1/2 transform -translate-x-1/2"
                     color="w-15 h-15"
                     tabIndex="0"
+                    positionClass="-top-7 left-1/2 transform -translate-x-1/2"
                     aria-label={`Technical icon: ${item.text}`}
                   />
                 </div>

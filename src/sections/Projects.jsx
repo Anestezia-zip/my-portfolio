@@ -131,18 +131,19 @@ const Projects = () => {
           <div className="flex items-center justify-between flex-wrap gap-5">
             <div className="flex items-center gap-3">
               {currentProject.tags.map((tag, index) => (
-                <TechButton
-                  key={index}
-                  src={tag.path}
-                  text={tag.name}
-                  index={index}
-                  activeIndex={activeTechTag}
-                  setActiveIndex={setActiveTechTag}
-                  color="w-15 h-15"
-                  tabIndex="0"
-                  positionClass="-top-8 left-0 transform"
-                  aria-label={`Technical icon: ${tag.text}`}
-                />
+                <div key={index}>
+                  <TechButton
+                    src={tag.path}
+                    text={tag.name}
+                    index={index}
+                    activeIndex={activeTechTag}
+                    setActiveIndex={setActiveTechTag}
+                    color="w-15 h-15"
+                    tabIndex="0"
+                    positionClass="-top-8 left-0 transform"
+                    aria-label={`Technical icon: ${tag.text}`}
+                  />
+                </div>
               ))}
             </div>
 
