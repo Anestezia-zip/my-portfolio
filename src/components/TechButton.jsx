@@ -32,7 +32,7 @@ const TechButton = ({ src, text, color = '', index, activeIndex, setActiveIndex,
   return (
     <div 
       ref={buttonRef} // Привязываем ссылку к элементу
-      className={`tech-logo cursor-pointer flex items-center gap-2 ${color} ${activeIndex === index ? "active:scale-105" : "z-0"}`} // Добавляем z-20 для активного элемента
+      className={`tech-logo cursor-pointer flex items-center gap-2 ${color} ${activeIndex === index && "active:scale-105"}`}
       onClick={handleClick} // Обработчик клика по кнопке
     >
       {/* Icon */}
@@ -41,10 +41,10 @@ const TechButton = ({ src, text, color = '', index, activeIndex, setActiveIndex,
       {/* Text */}
       {activeIndex === index && (
         <div
-            className={`absolute z-30 ${props.positionClass} transition-all duration-300 ease-out`}
+            className={`absolute ${props.positionClass} transition-all duration-300 ease-out`}
         >
             <span
-              className={`2xl:text-2xl text-base p-1 rounded-lg bg-white whitespace-nowrap shadow-lg ${activeIndex === index && 'relative z-20'}"`}
+              className="2xl:text-2xl text-base p-1 rounded-lg bg-white whitespace-nowrap shadow-lg"
             >
               {text}
             </span>
