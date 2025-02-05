@@ -43,6 +43,7 @@ const Projects = () => {
     setSelectedProjectIndex(0);
   };
 
+
   return (
     <section className="c-space my-20 sm:mt-40" id="projects">
       <h3 className="head-text mb-8" id="projects-heading">
@@ -131,7 +132,7 @@ const Projects = () => {
           <div className="flex items-center justify-between flex-wrap gap-5">
             <div className="flex items-center gap-3">
               {currentProject.tags.map((tag, index) => (
-                <div key={index}>
+                <div key={index} className="relative">
                   <TechButton
                     src={tag.path}
                     text={tag.name}
