@@ -140,7 +140,7 @@ const Projects = () => {
                   setActiveIndex={setActiveTechTag}
                   color="w-15 h-15"
                   tabIndex="0"
-                  positionClass="-top-8 left-0"
+                  positionClass="-top-8 left-0 transform"
                   aria-label={`Technical icon: ${tag.text}`}
                 />
               ))}
