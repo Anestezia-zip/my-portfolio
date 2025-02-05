@@ -138,7 +138,10 @@ const Projects = () => {
                   index={index}
                   activeIndex={activeTechTag}
                   setActiveIndex={setActiveTechTag}
+                  color="w-15 h-15"
+                  tabIndex="0"
                   positionClass="-top-8 left-0"
+                  aria-label={`Technical icon: ${tag.text}`}
                 />
               ))}
             </div>
