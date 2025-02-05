@@ -13,21 +13,21 @@ const TechButton = ({ src, text, color = '', index, activeIndex, setActiveIndex,
   };
 
   useEffect(() => {
-    // Функция для обработки кликов вне элемента
     const handleClickOutside = (event) => {
       if (buttonRef.current && !buttonRef.current.contains(event.target)) {
-        setActiveIndex(null); // Скрыть текст, если клик вне кнопки
+        setActiveIndex(null);
       }
     };
-
-    // Добавляем обработчик кликов
+  
     document.addEventListener("click", handleClickOutside);
-
-    // Убираем обработчик при размонтировании компонента
+    document.addEventListener("touchstart", handleClickOutside); // Добавляем touchstart
+  
     return () => {
       document.removeEventListener("click", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
     };
   }, [setActiveIndex]);
+  
 
   return (
     <div 
