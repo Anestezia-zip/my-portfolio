@@ -1,35 +1,35 @@
 import { Html, useProgress } from "@react-three/drei";
-import { useMemo } from "react";
+import placeholderImage from "/assets/dekstop.png";
 
 const CanvasLoader = () => {
   const { progress } = useProgress();
 
-  const displayedProgress = useMemo(() => {
-    return progress !== 0 ? `${progress.toFixed(2)}%` : "Loading...";
-  }, [progress]);
-
   return (
-    <Html
+    <Html  
       as="div"
       center
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
+        justifyContent: "center",
         flexDirection: "column",
+        width: "250px"
       }}
     >
-      <span className="canvas-loader"></span>
-      <p
-        style={{
-          fontSize: 14,
-          color: "#F1F1F1",
-          fontWeight: 800,
-          marginTop: 40,
-        }}
-      >
-        {displayedProgress}
-      </p>
+      <div>
+        <img
+          src={placeholderImage}
+          alt="3D Model Placeholder"
+          style={{
+            width: "100%",
+            height: "100%",
+          }}
+        />
+        <p style={{ fontSize: "20px", color: "#fff", marginTop: "10px", textAlign: "center" }}>
+          {progress.toFixed(0)}%
+        </p>
+      </div>
     </Html>
   );
 };
