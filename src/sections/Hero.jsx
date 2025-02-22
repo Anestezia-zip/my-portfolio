@@ -70,26 +70,34 @@ const Hero = () => {
         </div>
 
         {/* Centre: 3D-сцена */}
-        <div
-          className="relative -top-6 w-full h-[240px] md:w-[320px] md:h-[320px] lg:w-[350px] 2xl:w-[700px] 2xl:h-[550px]"
-          aria-hidden="true"
-          role="presentation"
-        >
-          <Canvas className="w-full h-full">
-            <Suspense fallback={<CanvasLoader />}>
-              <PerspectiveCamera makeDefault position={[0, 0, 5]} />
-              <HeroCamera isMobile={isMobile}>
-                <ModernGadgets
-                  position={sizes.deskPosition}
-                  rotation={[0.4, -0.8, 0]}
-                  scale={sizes.deskScale}
-                />
-              </HeroCamera>
-              <ambientLight intensity={1} />
-              <directionalLight position={[10, 10, 10]} intensity={0.5} />
-            </Suspense>
-          </Canvas>
-        </div>
+        {isMobile ? (
+          <img
+            src="/assets/edge-removedbg.png"
+            alt="3D Model Placeholder"
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div
+            className="relative -top-6 w-full h-[240px] md:w-[320px] md:h-[320px] lg:w-[350px] 2xl:w-[700px] 2xl:h-[550px]"
+            aria-hidden="true"
+            role="presentation"
+          >
+            <Canvas className="w-full h-full">
+              <Suspense fallback={<CanvasLoader />}>
+                <PerspectiveCamera makeDefault position={[0, 0, 5]} />
+                <HeroCamera isMobile={isMobile}>
+                  <ModernGadgets
+                    position={sizes.deskPosition}
+                    rotation={[0.4, -0.8, 0]}
+                    scale={sizes.deskScale}
+                  />
+                </HeroCamera>
+                <ambientLight intensity={1} />
+                <directionalLight position={[10, 10, 10]} intensity={0.5} />
+              </Suspense>
+            </Canvas>
+          </div>
+        )}
 
         {/* Right item list */}
         <div className="hidden relative top-10 md:flex justify-center gap-6 items-end w-fit">
@@ -129,7 +137,7 @@ const Hero = () => {
         </div>
 
         {/* Mobile tech item list */}
-        <div className="relative -top-10 max-[360px]:-top-14 md:hidden flex items-center justify-center w-fit">
+        <div className="relative top-0 max-[360px]:-top-14 md:hidden flex items-center justify-center w-fit">
           <div>
             <h3 className="font-generalsans text-lg my-3">
               My technical arsenal:
@@ -162,7 +170,7 @@ const Hero = () => {
         </div>
       </div>
 
-      <div className="relative max-2xl:top-14 max-md:-top-4 left-0 right-0 w-fit mx-auto z-10 c-space mt-2">
+      <div className="relative max-2xl:top-14 max-md:top-2 left-0 right-0 w-fit mx-auto z-10 c-space mt-2">
         <a href="#contact" className="w-fit">
           <Button
             name="Let's work together"

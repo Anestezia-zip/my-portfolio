@@ -1,5 +1,5 @@
 import { Html, useProgress } from "@react-three/drei";
-import placeholderImage from "/assets/dekstop.png";
+import placeholderImage from "/assets/dekstop-pic.png";
 
 const CanvasLoader = () => {
   const { progress } = useProgress();
