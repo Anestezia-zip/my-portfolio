@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { projectsByTech } from "../constatns";
 import { Canvas } from "@react-three/fiber";
-import CanvasLoader from "../components/Loading";
+import Loading from "../components/Loading";
 import { Center, OrbitControls } from "@react-three/drei";
 import { calculateSizes } from "../constatns";
 import { useMediaQuery } from "react-responsive";
@@ -213,7 +213,7 @@ const Projects = () => {
             <ambientLight intensity={Math.PI} />
             <directionalLight position={[10, 10, 5]} />
             <Center>
-              <Suspense fallback={<CanvasLoader />}>
+              <Suspense fallback={<Loading />}>
                 <group
                   scale={sizes.tvScale}
                   position={sizes.tvPosition}
