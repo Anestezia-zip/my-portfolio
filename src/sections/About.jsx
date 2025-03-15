@@ -31,9 +31,9 @@ const About = () => {
             </figure>
 
             <header>
-              <h2 className="grid-headtext">Hi, I’m Anastasia Peresunko</h2>
+              <h2 className="grid-headtext">I’m Anastasia</h2>
               <p className="grid-subtext">
-              I'm passionate about web development and enjoy the constant challenge of learning 
+              Passionate about coding and enjoy the constant challenge of learning 
               something new every day as I grow as a developer.
               </p>
             </header>
@@ -78,6 +78,7 @@ const About = () => {
                 name="Contact Me"
                 isBeam
                 containerClass="w-full mt-10 bg-gradient-to-b from-black via-gray-800 to-teal-900"
+                link="https://www.linkedin.com/in/anastasiia-peresunko-272412268/"
               />
             </header>
           </div>

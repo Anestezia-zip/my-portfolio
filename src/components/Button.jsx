@@ -1,5 +1,6 @@
-const Button = ({ name, isBeam = false, containerClass }) => {
-    return (
+const Button = ({ name, isBeam = false, containerClass, link }) => {
+  return (
+    <a href={link} target="_blank" rel="noopener noreferrer">
       <div className={`btn ${containerClass}`}>
         {isBeam && (
           <span className="relative flex h-3 w-3">
@@ -9,7 +10,8 @@ const Button = ({ name, isBeam = false, containerClass }) => {
         )}
         {name}
       </div>
-    );
-  };
-  
-  export default Button;
+    </a>
+  );
+};
+
+export default Button;
