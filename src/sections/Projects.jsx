@@ -47,11 +47,8 @@ const Projects = () => {
   return (
     <section className="c-space my-20 sm:mt-40" id="projects">
       <h3 className="head-text mb-8" id="projects-heading">
-        My projects
+        My {totalProjects} projects:
       </h3>
-      <p className="text-lg mb-4" aria-live="polite">
-        Currently, my portfolio features a total of {totalProjects} projects
-      </p>
 
       {/* Category select */}
       <div className="flex items-center max-sm:gap-4 gap-8 lg:gap-96">
